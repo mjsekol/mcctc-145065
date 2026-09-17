@@ -1,0 +1,37 @@
+2027-02-01 06:03:15 INFO    DieSetup started
+2027-02-01 06:03:15 INFO    loaded die_settings.json (41 dies)
+2027-02-01 22:57:30 INFO    closing: saving die_settings.json (41 dies)
+2027-02-01 22:57:31 INFO    saved die_settings.json
+2027-02-02 06:02:40 INFO    DieSetup started
+2027-02-02 06:02:40 INFO    loaded die_settings.json (41 dies)
+2027-02-02 22:58:52 INFO    closing: saving die_settings.json (41 dies)
+2027-02-02 22:58:53 INFO    saved die_settings.json
+2027-02-03 06:01:58 INFO    DieSetup started
+2027-02-03 06:01:58 INFO    loaded die_settings.json (41 dies)
+2027-02-03 22:59:59 INFO    closing: saving die_settings.json (41 dies)
+2027-02-04 06:04:21 INFO    DieSetup started
+2027-02-04 06:04:21 WARNING could not read die_settings.json: Expecting ',' delimiter: line 188 column 7 (char 3902); starting with defaults
+2027-02-04 06:04:21 INFO    saving die_settings.json (0 dies)
+2027-02-04 06:04:21 INFO    saved die_settings.json
+2027-02-04 06:31:09 INFO    settings replaced by user from usb_stick\die_settings.json
+2027-02-04 06:31:10 INFO    loaded die_settings.json (41 dies)
+2027-02-04 22:58:15 INFO    closing: saving die_settings.json (41 dies)
+2027-02-04 22:58:16 INFO    saved die_settings.json
+2027-02-05 06:02:02 INFO    DieSetup started
+2027-02-05 06:02:02 INFO    loaded die_settings.json (41 dies)
+2027-02-09 14:12:44 INFO    added die D-151 for L3-PRS-02
+2027-02-09 22:57:48 INFO    closing: saving die_settings.json (42 dies)
+2027-02-09 22:57:49 INFO    saved die_settings.json
+2027-02-10 06:03:30 INFO    DieSetup started
+2027-02-10 06:03:30 INFO    loaded die_settings.json (42 dies)
+2027-02-12 09:40:05 INFO    added die D-152 for L3-PRS-01
+2027-02-12 09:41:57 INFO    changed die D-117 shut_height_mm 431.0 -> 433.5
+2027-02-12 22:58:40 INFO    closing: saving die_settings.json (43 dies)
+2027-02-12 22:58:41 INFO    saved die_settings.json
+2027-02-13 06:02:11 INFO    DieSetup started
+2027-02-13 06:02:11 INFO    loaded die_settings.json (43 dies)
+2027-02-16 22:59:58 INFO    closing: saving die_settings.json (43 dies)
+2027-02-17 06:01:12 INFO    DieSetup started
+2027-02-17 06:01:12 WARNING could not read die_settings.json: Unterminated string starting at: line 201 column 18 (char 4210); starting with defaults
+2027-02-17 06:01:12 INFO    saving die_settings.json (0 dies)
+2027-02-17 06:01:12 INFO    saved die_settings.json

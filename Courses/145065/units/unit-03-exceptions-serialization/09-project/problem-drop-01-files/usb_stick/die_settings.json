@@ -1,0 +1,295 @@
+{
+  "version": 1,
+  "saved_at": "2027-02-01T22:57:31",
+  "dies": [
+    {
+      "die": "D-110",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 411.0,
+      "tonnage": 35,
+      "stroke_rate_spm": 24
+    },
+    {
+      "die": "D-111",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 444.0,
+      "tonnage": 60,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-112",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 455.5,
+      "tonnage": 50,
+      "stroke_rate_spm": 24
+    },
+    {
+      "die": "D-113",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 391.5,
+      "tonnage": 80,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-114",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 432.5,
+      "tonnage": 60,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-115",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 451.5,
+      "tonnage": 90,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-116",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 443.0,
+      "tonnage": 50,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-117",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 431.0,
+      "tonnage": 100,
+      "stroke_rate_spm": 24,
+      "notes": "shim 0.5 mm under the rear left corner"
+    },
+    {
+      "die": "D-118",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 435.5,
+      "tonnage": 35,
+      "stroke_rate_spm": 24
+    },
+    {
+      "die": "D-119",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 445.0,
+      "tonnage": 90,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-120",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 402.5,
+      "tonnage": 35,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-121",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 432.0,
+      "tonnage": 90,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-122",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 420.0,
+      "tonnage": 60,
+      "stroke_rate_spm": 24
+    },
+    {
+      "die": "D-123",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 420.5,
+      "tonnage": 70,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-124",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 389.0,
+      "tonnage": 60,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-125",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 459.5,
+      "tonnage": 100,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-126",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 432.0,
+      "tonnage": 55,
+      "stroke_rate_spm": 18
+    },
+    {
+      "die": "D-127",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 444.5,
+      "tonnage": 80,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-128",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 430.5,
+      "tonnage": 50,
+      "stroke_rate_spm": 18
+    },
+    {
+      "die": "D-129",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 440.0,
+      "tonnage": 90,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-130",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 438.0,
+      "tonnage": 35,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-131",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 413.5,
+      "tonnage": 90,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-132",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 413.0,
+      "tonnage": 35,
+      "stroke_rate_spm": 15,
+      "notes": "slow the first ten strokes"
+    },
+    {
+      "die": "D-133",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 391.5,
+      "tonnage": 70,
+      "stroke_rate_spm": 24
+    },
+    {
+      "die": "D-134",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 415.5,
+      "tonnage": 35,
+      "stroke_rate_spm": 18
+    },
+    {
+      "die": "D-135",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 383.0,
+      "tonnage": 60,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-136",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 411.5,
+      "tonnage": 45,
+      "stroke_rate_spm": 24
+    },
+    {
+      "die": "D-137",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 413.5,
+      "tonnage": 60,
+      "stroke_rate_spm": 18
+    },
+    {
+      "die": "D-138",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 404.5,
+      "tonnage": 55,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-139",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 447.5,
+      "tonnage": 100,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-140",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 418.0,
+      "tonnage": 50,
+      "stroke_rate_spm": 18
+    },
+    {
+      "die": "D-141",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 381.5,
+      "tonnage": 90,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-142",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 383.0,
+      "tonnage": 40,
+      "stroke_rate_spm": 18
+    },
+    {
+      "die": "D-143",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 399.0,
+      "tonnage": 90,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-144",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 397.0,
+      "tonnage": 60,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-145",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 437.0,
+      "tonnage": 60,
+      "stroke_rate_spm": 15
+    },
+    {
+      "die": "D-146",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 390.5,
+      "tonnage": 40,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-147",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 446.0,
+      "tonnage": 90,
+      "stroke_rate_spm": 12
+    },
+    {
+      "die": "D-148",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 388.0,
+      "tonnage": 45,
+      "stroke_rate_spm": 24
+    },
+    {
+      "die": "D-149",
+      "press": "L3-PRS-02",
+      "shut_height_mm": 416.0,
+      "tonnage": 90,
+      "stroke_rate_spm": 20
+    },
+    {
+      "die": "D-150",
+      "press": "L3-PRS-01",
+      "shut_height_mm": 397.0,
+      "tonnage": 55,
+      "stroke_rate_spm": 18
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "format": "line3-plant",
+  "version": 2,
+  "line": {
+    "name": "Line 3",
+    "cells": [
+      {
+        "kind": "cell",
+        "name": "Forming",
+        "items": [
+          {
+            "kind": "press",
+            "tag": "L3-PRS-01",
+            "name": "Press 1",
+            "rated_kw": 15.0,
+            "tonnage": 60.0,
+            "service_interval": 20000,
+            "strokes_since_service": 1250,
+            "locked_out_by": null
+          },
+          {
+            "kind": "press",
+            "tag": "L3-PRS-02",
+            "name": "Press 2",
+            "rated_kw": 22.0,
+            "tonnage": 100.0,
+            "service_interval": 20000,
+            "strokes_since_service": 0,
+            "locked_out_by": "tech-07"
+          }
+        ]
+      },
+      {
+        "kind": "cell",
+        "name": "Finishing",
+        "items": [
+          {
+            "kind": "oven",
+            "tag": "L3-OVN-01",
+            "name": "Cure Oven",
+            "rated_kw": 45.0,
+            "setpoint_c": 200.0,
+            "max_c": 240.0,
+            "locked_out_by": null
+          },
+          {
+            "kind": "cell",
+            "name": "Transfer",
+            "items": [
+              {
+                "kind": "conveyor",
+                "tag": "L3-CNV-01",
+                "name": "Transfer Conveyor",
+                "rated_kw": 3.0,
+                "max_speed_mps": 1.5,
+                "speed_mps": 0.8,
+                "locked_out_by": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "cell",
+        "name": "Área de Soldadura",
+        "items": [
+          {
+            "kind": "rack",
+            "tag": "L3-RCK-01",
+            "name": "Finished Goods Rack",
+            "capacity_kg": 1200.0,
+            "load_kg": 640.0
+          }
+        ]
+      }
+    ]
+  }
+}

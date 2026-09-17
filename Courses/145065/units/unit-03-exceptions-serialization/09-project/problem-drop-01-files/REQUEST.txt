@@ -1,0 +1,18 @@
+From: the second-shift lead, Line 3 (Riverside Fabrication is a composite shop)
+
+The die setup program on the office PC keeps losing everything. Twice this
+month we came in and every die setting was gone. The first time, somebody
+found an old copy on the USB stick in the desk drawer and put it back. This
+time the stick copy is two weeks old, and I know we added dies since then.
+
+Somebody on first shift says it is a virus. I do not think so, but I do not
+know what it is.
+
+The office PC gets shut off at the power strip when the last person leaves,
+around eleven. It has always been that way.
+
+All I want: make the program copy its file to the USB stick every night at
+midnight, so this never happens again.
+
+Attached: the program's log, the file it has right now, and what is on the
+USB stick.

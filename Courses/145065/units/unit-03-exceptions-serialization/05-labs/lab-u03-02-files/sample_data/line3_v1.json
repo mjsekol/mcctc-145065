@@ -1,0 +1,12 @@
+{
+  "format": "line3-plant",
+  "version": 1,
+  "line_name": "Line 3",
+  "equipment": [
+    {"type": "press", "tag": "L3-PRS-01", "name": "Press 1", "cell": "Forming", "power_kw": 15, "tonnage": 60},
+    {"type": "press", "tag": "L3-PRS-02", "name": "Press 2", "cell": "Forming", "power_kw": 22, "tonnage": 100},
+    {"type": "oven", "tag": "L3-OVN-01", "name": "Cure Oven", "cell": "Finishing", "power_kw": 45, "setpoint_c": 200, "max_c": 240},
+    {"type": "conveyor", "tag": "L3-CNV-01", "name": "Transfer Conveyor", "cell": "Finishing", "power_kw": 3, "max_speed_mps": 1.5},
+    {"type": "rack", "tag": "L3-RCK-01", "name": "Finished Goods Rack", "cell": "Staging", "capacity_kg": 1200, "load_kg": 640}
+  ]
+}
