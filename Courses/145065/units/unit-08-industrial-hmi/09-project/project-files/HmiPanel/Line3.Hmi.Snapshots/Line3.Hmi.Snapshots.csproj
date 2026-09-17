@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    COPIED from the course's HMI anchor, without the Week 13 app.
+    Renders your operator panel to PNG files without
+    showing a window, using RenderTargetBitmap on an STA thread. This is the
+    evidence that the XAML lays out. It is not a substitute for a person
+    pressing the buttons on a lab machine.
+
+    Run it from the HmiPanel folder with dotnet run, naming this project,
+    then the output folder. The exact command is in the project brief.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Line3.Hmi.Core\Line3.Hmi.Core.csproj" />
+    <ProjectReference Include="..\Line3.Hmi.Panel\Line3.Hmi.Panel.csproj" />
+  </ItemGroup>
+
+</Project>

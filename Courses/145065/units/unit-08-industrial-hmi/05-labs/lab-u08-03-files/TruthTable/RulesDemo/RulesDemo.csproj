@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Lab U08-03 . prints your truth table and your team's limits. Given to you. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rules\Rules.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="thresholds.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

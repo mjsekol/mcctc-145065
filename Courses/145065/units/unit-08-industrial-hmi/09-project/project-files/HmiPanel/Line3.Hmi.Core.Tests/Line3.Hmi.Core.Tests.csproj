@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- HMI PANEL project acceptance tests. Copied from the course's HMI anchor. Run: dotnet test -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <!-- The exact versions already in the lab's NuGet cache. Do not change them. -->
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Line3.Hmi.Core\Line3.Hmi.Core.csproj" />
+  </ItemGroup>
+
+  <!-- The real thresholds files, so the tests check what the panel ships. -->
+  <ItemGroup>
+    <None Include="..\Line3.Hmi.Panel\thresholds.json" Link="thresholds.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\Line3.Hmi.Panel\thresholds.bench.json" Link="thresholds.bench.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The Line 3 operator panel. Units 8 and 9.
+    net8.0-windows with WPF, so older lab SDKs build it.
+    All logic lives in Line3.Hmi.Core; this project is the window and nothing else.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>Line3.Hmi.Panel</RootNamespace>
+    <AssemblyTitle>Line 3 Sensor Monitor</AssemblyTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Line3.Hmi.Core\Line3.Hmi.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="thresholds.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="thresholds.bench.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

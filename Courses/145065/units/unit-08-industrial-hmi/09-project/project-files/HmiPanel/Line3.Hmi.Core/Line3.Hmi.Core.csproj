@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Everything the panel knows that does not need a window: the contract, the
+    parser, the thresholds, the state rules, the alarm latch, the polling
+    client, and the view models. Plain net8.0, so xunit can test all of it
+    without starting WPF.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>Line3.Hmi.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>

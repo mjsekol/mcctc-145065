@@ -1,0 +1,81 @@
+<UserControl x:Class="Line3.Hmi.Panel.PanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="1280" Height="800"
+             FontFamily="Segoe UI"
+             Background="#FFFFFF">
+    <!--
+      HMI PANEL project . STARTER VIEW . replace it.
+
+      This view runs, binds to every property you need, and shows the data.
+      It also fails most of the operator requirements, on purpose:
+
+        - state is shown by words only: no shape, no color (REQ-01)
+        - the text is small and the buttons are tiny (REQ-10, REQ-11)
+        - the stale "last value" sits right next to the live number (REQ-02)
+        - the confirmation buttons touch each other (REQ-10)
+
+      Keep the bindings. Replace the layout. Every style your panel uses
+      belongs inside this file, so Line3.Hmi.Snapshots can render it.
+
+      Properties you can bind to, all on PanelViewModel:
+        Title, MonitoringNotice, ServiceText, ConnectionState,
+        ConnectionTitle, ConnectionDetail, StatusLine, HasUnknowns, Tiles,
+        Events, IsConfirmOpen, ConfirmTitle, ConfirmText,
+        ConfirmAcknowledgeCommand, CancelAcknowledgeCommand
+
+      On each tile (SensorTileViewModel):
+        Label, Unit, LimitsText, Reason, State, StateText, ValueText,
+        ValueIsLive, LastKnownText, HasLastKnown, Explanation, Latch,
+        AlarmBannerText, HasAlarmBanner, CanAcknowledge, AcknowledgeCommand
+    -->
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="Visible" />
+    </UserControl.Resources>
+
+    <Grid>
+        <DockPanel Margin="12">
+            <StackPanel DockPanel.Dock="Top">
+                <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold" />
+                <TextBlock Text="{Binding MonitoringNotice}" />
+                <TextBlock Text="{Binding ServiceText}" />
+                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                    <TextBlock Text="{Binding ConnectionTitle}" FontWeight="Bold" />
+                    <TextBlock Text="{Binding ConnectionDetail}" Margin="8,0,0,0" />
+                </StackPanel>
+                <TextBlock Text="{Binding StatusLine}" Margin="0,4,0,8" />
+            </StackPanel>
+
+            <ListBox DockPanel.Dock="Bottom" Height="110" ItemsSource="{Binding Events}" />
+
+            <ItemsControl ItemsSource="{Binding Tiles}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0,4">
+                            <TextBlock Text="{Binding Label}" Width="230" />
+                            <TextBlock Text="{Binding StateText}" Width="110" />
+                            <TextBlock Text="{Binding ValueText}" Width="70" />
+                            <TextBlock Text="{Binding LastKnownText}" Width="260" />
+                            <TextBlock Text="{Binding AlarmBannerText}" Width="230" />
+                            <Button Content="Ack" Padding="4,0" Command="{Binding AcknowledgeCommand}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
+
+        <!-- The confirmation. It must cover the panel while it is open. -->
+        <Grid Background="#CC000000" Visibility="{Binding IsConfirmOpen, Converter={StaticResource Visible}}">
+            <Border Background="White" Padding="16" Width="500" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Text="{Binding ConfirmTitle}" FontWeight="Bold" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding ConfirmText}" TextWrapping="Wrap" Margin="0,8" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Cancel" Command="{Binding CancelAcknowledgeCommand}" IsCancel="True" />
+                        <Button Content="Yes" Command="{Binding ConfirmAcknowledgeCommand}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

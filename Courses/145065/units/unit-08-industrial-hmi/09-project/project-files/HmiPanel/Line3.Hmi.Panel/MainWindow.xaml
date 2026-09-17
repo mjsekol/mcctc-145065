@@ -1,0 +1,22 @@
+<Window x:Class="Line3.Hmi.Panel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Line3.Hmi.Panel"
+        Title="Line 3 Sensor Monitor (monitoring only)"
+        Width="1280" Height="840" MinWidth="640" MinHeight="420"
+        Background="#1A1A1A">
+
+    <!-- Escape closes the confirmation without acknowledging anything. -->
+    <Window.InputBindings>
+        <KeyBinding Key="Escape" Command="{Binding CancelAcknowledgeCommand}" />
+    </Window.InputBindings>
+
+    <!--
+      The panel is laid out once, at 1280 by 800, and the Viewbox scales it to
+      whatever screen the lab mounts. Text and touch targets grow and shrink
+      together, so the proportions an operator learns never change.
+    -->
+    <Viewbox Stretch="Uniform">
+        <local:PanelView Width="1280" Height="800" />
+    </Viewbox>
+</Window>

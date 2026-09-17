@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "setting": "Riverside Fabrication, Line 3. A composite shop, not a real one. Lab U08-03 copy of the course's Line 3 thresholds file, with the oven reason removed for your team to write.",
+  "service_url": "http://127.0.0.1:8700",
+  "poll_interval_ms": 1000,
+  "request_timeout_ms": 1500,
+  "stale_after_seconds": 5,
+  "stale_reason": "The Pi samples once a second. Five seconds is five missed samples in a row, long enough that one slow network moment does not cry wolf, short enough that an operator never trusts a number for more than a few seconds after the Pi stops updating it.",
+  "sensors": [
+    {
+      "id": "oven-temp",
+      "label": "Cure oven temperature",
+      "unit": "C",
+      "decimals": 1,
+      "low": 190.0,
+      "high": 230.0,
+      "reason": "REPLACE THIS with your team's reason for these two numbers, in a sentence an operator can read."
+    },
+    {
+      "id": "press-vibration",
+      "label": "Press vibration",
+      "unit": "mm/s",
+      "decimals": 1,
+      "low": null,
+      "high": 6.0,
+      "reason": "Line 3's press runs near 3.1 mm/s when healthy. The composite shop's maintenance lead set the limit at about twice the healthy baseline: a loose mount or a failing bearing shows up as a sustained rise, and 6.0 is far enough above normal wander that it does not alarm on a heavy part. No low limit: a quiet press is not a hazard, and a stopped press is covered by the operator's own view of the line."
+    },
+    {
+      "id": "coolant-level",
+      "label": "Coolant level",
+      "unit": "%",
+      "decimals": 0,
+      "low": 25.0,
+      "high": null,
+      "reason": "At the composite shop's usage rate, 25 percent leaves roughly one shift of coolant, which is time to refill before the pump runs dry. No high limit: the tank has an overflow, and an overfilled tank is a housekeeping problem, not a machine problem."
+    }
+  ]
+}

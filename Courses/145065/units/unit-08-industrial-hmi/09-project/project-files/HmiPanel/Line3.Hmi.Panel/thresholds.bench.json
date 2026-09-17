@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "setting": "The lab bench kit for Riverside Fabrication, Line 3 (a composite). A DS18B20 stands in for the oven probe, so these limits are chosen for a bench sensor you can warm with your hand, not for an oven.",
+  "service_url": "http://127.0.0.1:8700",
+  "poll_interval_ms": 1000,
+  "request_timeout_ms": 1500,
+  "stale_after_seconds": 5,
+  "stale_reason": "Same as the Line 3 file: five missed one-second samples.",
+  "sensors": [
+    {
+      "id": "oven-temp",
+      "label": "Bench probe (stands in for the oven)",
+      "unit": "C",
+      "decimals": 1,
+      "low": 15.0,
+      "high": 30.0,
+      "reason": "A room-temperature bench sits inside 15 to 30 C. Holding the probe in your hand for a minute, or dipping it in warm tap water, carries it above 30 C, so you can make a real alarm happen on purpose and watch it latch. Confirm your room's temperature first and adjust if the bench already reads near a limit."
+    },
+    {
+      "id": "press-vibration",
+      "label": "Press vibration (not wired in the kit)",
+      "unit": "mm/s",
+      "decimals": 1,
+      "low": null,
+      "high": 6.0,
+      "reason": "Kept from the Line 3 file so the panel layout matches. The bench kit has no vibration sensor, so the service reports a failed read and this tile shows NO DATA. That is the correct display for a sensor that is not there."
+    },
+    {
+      "id": "coolant-level",
+      "label": "Coolant level (not wired in the kit)",
+      "unit": "%",
+      "decimals": 0,
+      "low": 25.0,
+      "high": null,
+      "reason": "Kept from the Line 3 file so the panel layout matches. The bench kit has no level sensor, so the service reports a failed read and this tile shows NO DATA."
+    }
+  ]
+}

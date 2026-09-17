@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Lab U08-03 . Truth Table and Thresholds . the library. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Line3.Hmi.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>
