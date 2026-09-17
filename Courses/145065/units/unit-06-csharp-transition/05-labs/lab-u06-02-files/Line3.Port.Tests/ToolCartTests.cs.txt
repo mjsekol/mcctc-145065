@@ -1,0 +1,44 @@
+// ToolCartTests.cs
+// Part C. Rename this file from ToolCartTests.cs.txt to ToolCartTests.cs
+// when the lab tells you to. The test project will not build until a
+// ToolCart class exists. That build failure is step 11.
+
+using Line3.Port;
+
+namespace Line3.Port.Tests;
+
+public class ToolCartTests
+{
+    [Fact]
+    public void C01_a_cart_is_equipment()
+    {
+        Equipment item = new ToolCart("L3-CRT-01", "Setup Cart", 12);
+        Assert.Equal("cart", item.Kind);
+        Assert.Equal("L3-CRT-01 Setup Cart (cart), 0 of 12 tools out", item.Describe());
+    }
+
+    [Fact]
+    public void C02_checked_out_tools_show_in_the_description()
+    {
+        var cart = new ToolCart("L3-CRT-01", "Setup Cart", 12);
+        cart.ToolsOut = 3;
+        Assert.Equal(3, cart.ToolsOut);
+        Assert.Equal("L3-CRT-01 Setup Cart (cart), 3 of 12 tools out", cart.Describe());
+    }
+
+    [Theory]
+    [InlineData(-1)]
+    [InlineData(13)]
+    public void C03_tools_out_stays_between_zero_and_the_slot_count(int bad)
+    {
+        var cart = new ToolCart("L3-CRT-01", "Setup Cart", 12);
+        Assert.ThrowsAny<ArgumentException>(() => cart.ToolsOut = bad);
+        Assert.Equal(0, cart.ToolsOut);
+    }
+
+    [Fact]
+    public void C04_a_cart_needs_at_least_one_slot()
+    {
+        Assert.ThrowsAny<ArgumentException>(() => new ToolCart("L3-CRT-01", "Setup Cart", 0));
+    }
+}
