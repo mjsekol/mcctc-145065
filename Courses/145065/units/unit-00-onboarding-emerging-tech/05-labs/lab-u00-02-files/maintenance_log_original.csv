@@ -1,0 +1,4 @@
+logged_at,equipment,measurement,value,unit,status
+2027-01-11 06:10:00,Paint cure oven,temperature,405.0,F,OK
+2027-01-11 06:12:00,Press 2,vibration,3.0,mm/s,OK
+2027-01-11 06:15:00,Coolant tank,level,71.0,%,OK
