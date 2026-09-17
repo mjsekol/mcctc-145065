@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Open work{% endblock %}
+{% block heading %}Open work on Line 3{% endblock %}
+{% block content %}
+{% if critical %}
+<div class="alert">
+  <h2>{{ critical | length }} critical {{ "issue" if critical | length == 1 else "issues" }} open</h2>
+  <ul>
+    {% for issue in critical %}
+    <li><a href="{{ url_for('issue_detail', issue_id=issue.id) }}">{{ issue.equipment_code }}: {{ issue.title }}</a>{% if issue.locked_out %} (locked out){% endif %}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+<p>{{ open_issues | length }} open {{ "issue" if open_issues | length == 1 else "issues" }}, most urgent first.</p>
+{% set issues = open_issues %}
+{% set caption = "Open and in-progress issues" %}
+{% include "_issue_table.html" %}
+{% endblock %}

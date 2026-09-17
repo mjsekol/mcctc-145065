@@ -1,0 +1,34 @@
+/* scrap.css · high contrast, 44 px targets, status by word and shape as well as color. */
+body { font-family: system-ui, "Segoe UI", Arial, sans-serif; font-size: 1.0625rem; line-height: 1.5; color: #111; background: #fff; margin: 0; }
+.skip-link { position: absolute; left: -999px; top: 0; padding: 0.75rem 1rem; background: #233452; color: #fff; }
+.skip-link:focus { left: 0.5rem; }
+.site-header { background: #233452; color: #fff; padding: 1rem; }
+.brand { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 700; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.site-header a { display: inline-block; min-height: 44px; padding: 0.6rem 0.9rem; border: 2px solid #fff; border-radius: 4px; color: #fff; text-decoration: none; font-weight: 600; box-sizing: border-box; }
+main { padding: 1rem; max-width: 60rem; }
+h1 { color: #233452; line-height: 1.2; }
+a { color: #1a4c8b; }
+main a { display: inline-block; min-height: 44px; padding: 0.6rem 0; box-sizing: border-box; }
+table { width: 100%; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #7a7a7a; padding: 0.5rem; text-align: left; vertical-align: top; }
+th { background: #eef4fb; }
+.num { text-align: right; }
+td a { padding: 0.6rem 0; }
+.search { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.5rem; }
+.search label { flex-basis: 100%; font-weight: 700; }
+input { min-height: 44px; padding: 0.5rem; width: 100%; max-width: 24rem; box-sizing: border-box; font-size: 1rem; }
+button { min-height: 44px; min-width: 44px; padding: 0.6rem 1.2rem; background: #57a1eb; color: #08233f; border: 0; border-radius: 4px; font-size: 1rem; font-weight: 700; }
+button.danger, a.danger { background: #b0001d; color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 700; text-decoration: none; }
+.tag { display: inline-block; padding: 0.1rem 0.5rem; border: 2px solid; border-radius: 4px; font-weight: 700; }
+.tag::before { margin-right: 0.3rem; }
+.tag-rework { color: #6b3d00; background: #fff4e0; }
+.tag-rework::before { content: "\25B2"; }
+.tag-scrap { color: #8a0016; background: #fbeae8; }
+.tag-scrap::before { content: "\25A0"; }
+dt { font-weight: 700; }
+dd { margin: 0 0 0.5rem; }
+footer { padding: 1rem; color: #4a4a4a; border-top: 1px solid #c7daf0; margin-top: 2rem; }
+td { overflow-wrap: anywhere; }
+@media (max-width: 40rem) { main { padding: 0.5rem; } th, td { padding: 0.3rem; font-size: 0.9rem; } .tag { padding: 0.1rem 0.25rem; } }

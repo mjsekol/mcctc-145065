@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Downtime events{% endblock %}
+{% block content %}
+<h1>Line 3 downtime events</h1>
+<p>{{ events | length }} {{ "event" if events | length == 1 else "events" }}, newest first.</p>
+<table>
+  <thead><tr><th scope="col">Machine</th><th scope="col">Reason</th><th scope="col" class="num">Minutes</th><th scope="col">State</th></tr></thead>
+  <tbody>
+    {% for ev in events %}
+    <tr>
+      <td>{{ ev.code }} {{ ev.name }}</td>
+      <td><a href="{{ url_for('event_detail', event_id=ev.id) }}">{{ ev.reason }}</a></td>
+      <td class="num">{{ ev.minutes }}</td>
+      <td>{% if ev.resolved %}<span class="tag tag-done">Resolved</span>{% else %}<span class="tag tag-open">Open</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

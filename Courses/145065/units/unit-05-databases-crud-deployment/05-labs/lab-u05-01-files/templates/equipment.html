@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Equipment{% endblock %}
+{% block heading %}Line 3 equipment{% endblock %}
+{% block content %}
+<div class="table-wrap">
+  <table>
+    <caption>{{ equipment | length }} machines</caption>
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Machine</th>
+        <th scope="col">Cell</th>
+        <th scope="col" class="num">Open issues</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for machine in equipment %}
+      <tr>
+        <td><a href="{{ url_for('equipment_detail', code=machine.code) }}">{{ machine.code }}</a></td>
+        <td>{{ machine.name }}</td>
+        <td>{{ machine.cell }}</td>
+        <td class="num">{{ counts[machine.code] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

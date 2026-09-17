@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Request trace{% endblock %}
+{% block heading %}What the server received{% endblock %}
+{% block content %}
+<p>Your browser sent a request. Flask matched its path to a rule, called one function, and that function built this page. Add <code>?machine=PB-01</code> to the address and reload to see query arguments arrive.</p>
+<dl class="facts">
+  <dt>Method</dt>
+  <dd>{{ method }}</dd>
+  <dt>Path</dt>
+  <dd>{{ path }}</dd>
+  <dt>Matched rule</dt>
+  <dd>{{ rule }}</dd>
+  <dt>Function called</dt>
+  <dd>{{ endpoint }}</dd>
+</dl>
+<h2>Query arguments</h2>
+{% if args %}
+<ul>
+  {% for name, value in args %}
+  <li>{{ name }} = {{ value }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>None were sent.</p>
+{% endif %}
+<h2>Three of the request headers</h2>
+<dl class="facts">
+  {% for name, value in headers %}
+  <dt>{{ name }}</dt>
+  <dd>{{ value }}</dd>
+  {% endfor %}
+</dl>
+{% endblock %}

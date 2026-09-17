@@ -1,0 +1,33 @@
+# render.yaml · a Render Blueprint for the Line 3 Maintenance Log
+#
+# [VERIFY] EVERY LINE. This file was written from Render's Blueprint format as
+# the builder understood it and has not been deployed from this machine.
+# Render changes its field names, runtimes, plans, free-tier limits, and
+# whether a payment card is required. Check the current Blueprint reference
+# on render.com before a class uses this file, and choose plans in the
+# dashboard. No plan is named here on purpose.
+#
+# The manual dashboard steps in DEPLOY.md do the same job without this file.
+
+services:
+  - type: web
+    name: line3-maintenance-log
+    runtime: python
+    rootDir: app                        # [VERIFY] the folder that holds app.py in your repository
+    buildCommand: pip install -r requirements.txt && python manage.py init-if-empty
+    startCommand: gunicorn wsgi:app
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SECRET_KEY
+        generateValue: true             # [VERIFY] Render generates a random value once
+      - key: DATABASE_URL
+        fromDatabase:
+          name: line3-db
+          property: connectionString    # [VERIFY]
+
+databases:
+  - name: line3-db

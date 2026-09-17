@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block heading %}Downtime and labor by machine{% endblock %}
+{% block content %}
+<p>Every number after the machine name is calculated from the log when you open this page.</p>
+<div class="table-wrap">
+  <table>
+    <caption>Most downtime first</caption>
+    <thead>
+      <tr>
+        <th scope="col">Machine</th>
+        <th scope="col" class="num">Issues</th>
+        <th scope="col" class="num">Open</th>
+        <th scope="col" class="num">Downtime (h)</th>
+        <th scope="col" class="num">Average downtime per issue (min)</th>
+        <th scope="col" class="num">Labor (h)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <th scope="row"><a href="{{ url_for('equipment_detail', code=row.code) }}">{{ row.code }}</a> {{ row.name }}</th>
+        <td class="num">{{ row.total_issues }}</td>
+        <td class="num">{{ row.open_issues }}</td>
+        <td class="num">{{ "%.1f" | format(row.downtime_hours) }}</td>
+        <td class="num">{{ "%.1f" | format(row.avg_downtime_minutes) }}</td>
+        <td class="num">{{ "%.1f" | format(row.labor_hours) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">All of Line 3</th>
+        <td class="num">{{ totals.total_issues }}</td>
+        <td class="num">{{ totals.open_issues }}</td>
+        <td class="num">{{ "%.1f" | format(totals.downtime_hours) }}</td>
+        <td class="num">Not totaled</td>
+        <td class="num">{{ "%.1f" | format(totals.labor_hours) }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<p><a class="button secondary" href="{{ url_for('reports_csv') }}" download>Download this report as CSV</a></p>
+
+<h2>Open issues by severity</h2>
+<div class="table-wrap">
+  <table>
+    <caption>Open and in-progress only</caption>
+    <thead>
+      <tr>
+        <th scope="col">Severity</th>
+        <th scope="col" class="num">Open issues</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in severities | reverse %}
+      <tr>
+        <th scope="row"><span class="sev sev-{{ s }}">{{ s | capitalize }}</span></th>
+        <td class="num">{{ by_severity.get(s, 0) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Time to close</h2>
+{% if closed %}
+<div class="table-wrap">
+  <table>
+    <caption>Closed issues, hours from report to close</caption>
+    <thead>
+      <tr>
+        <th scope="col">Issue</th>
+        <th scope="col">Machine</th>
+        <th scope="col" class="num">Hours to close</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for issue in closed %}
+      <tr>
+        <td><a href="{{ url_for('issue_detail', issue_id=issue.id) }}">{{ issue.id }}: {{ issue.title }}</a></td>
+        <td>{{ issue.equipment_code }}</td>
+        <td class="num">{{ "%.1f" | format(issue.hours_to_close) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p>No issues are closed yet.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,5 @@
+equipment_code,reported_by,title,description,severity,status,downtime_minutes,locked_out,reported_at,closed_at
+LC-01,T-1062,Assist gas pressure drops mid-sheet,"Nitrogen pressure falls from 18 bar to 12 bar on long cuts, and the edge quality drops with it.",high,open,35,no,2025-11-12T07:10:00Z,
+CV-01,T-1041,Roller 14 bearing noise,"Grinding sound from roller 14 at full speed. No heat at the housing yet.",medium,open,0,no,2025-11-12T08:25:00Z,
+PB-01,T-1057,Light curtain muting lamp out,"The muting indicator lamp does not light. The light curtain itself still stops the ram.",critical,in_progress,20,yes,2025-11-12T09:02:00Z,
+WR-01,T-1041,Teach pendant cable strain relief loose,"The strain relief at the pendant end turns by hand. Cable is intact.",low,closed,0,no,2025-11-05T12:40:00Z,2025-11-05T13:10:00Z

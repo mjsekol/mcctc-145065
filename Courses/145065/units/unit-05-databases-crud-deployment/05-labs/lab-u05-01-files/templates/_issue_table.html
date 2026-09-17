@@ -1,0 +1,32 @@
+{#- _issue_table.html · included by pages that list issues. Needs: issues, caption. -#}
+{% if issues %}
+<div class="table-wrap">
+  <table>
+    <caption>{{ caption }}</caption>
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Issue</th>
+        <th scope="col">Machine</th>
+        <th scope="col">Severity</th>
+        <th scope="col">Status</th>
+        <th scope="col">Reported (UTC)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for issue in issues %}
+      <tr>
+        <td>{{ issue.id }}</td>
+        <td><a href="{{ url_for('issue_detail', issue_id=issue.id) }}">{{ issue.title }}</a></td>
+        <td>{{ issue.equipment_code }}</td>
+        <td><span class="sev sev-{{ issue.severity }}">{{ issue.severity | capitalize }}</span></td>
+        <td>{{ issue.status_label }}</td>
+        <td>{{ issue.reported_at.strftime("%Y-%m-%d %H:%M") }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p>No issues match.</p>
+{% endif %}

@@ -1,0 +1,103 @@
+{#-
+  issue_form.html · create a new issue, or edit one (when `issue` is set).
+  Every {{ value }} is escaped by Jinja. The hint attributes come from
+  validation.py through `rules`, so the browser and the server check the same numbers.
+-#}
+{% extends "base.html" %}
+{% from "_macros.html" import described, error_for, error_summary with context %}
+{% block title %}{% if errors %}Error: {% endif %}{% if issue %}Edit issue {{ issue.id }}{% else %}Log an issue{% endif %}{% endblock %}
+{% block heading %}{% if issue %}Edit issue {{ issue.id }}{% else %}Log an issue{% endif %}{% endblock %}
+{% block content %}
+{{ error_summary("with this issue") }}
+{% if issue %}
+<p>Reported by {{ issue.reporter_name }} ({{ issue.reporter_badge }}). The reporter does not change. Closing the issue records the time it closed.</p>
+<form class="entry" action="{{ url_for('update_issue', issue_id=issue.id) }}" method="post">
+{% else %}
+<p>Every field is required except the lockout box. If the machine is unsafe, lock it out before you log the issue.</p>
+<form class="entry" action="{{ url_for('create_issue') }}" method="post">
+{% endif %}
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  {% if not issue %}
+
+  <div class="field">
+    <label for="reported-by">Your badge number</label>
+    <p class="hint" id="reported-by-hint">T or S, a hyphen, then four digits. Example: T-1041.</p>
+    <input id="reported-by" name="reported_by" type="text" required autocomplete="off"
+           pattern="{{ rules.badge_pattern }}" maxlength="6" value="{{ values.reported_by or '' }}"{{ described("reported_by", "reported-by-hint") }}>
+    {{- error_for("reported_by") }}
+  </div>
+  {% endif %}
+
+  <div class="field">
+    <label for="equipment">Machine</label>
+    <select id="equipment" name="equipment" required{{ described("equipment") }}>
+      <option value="">Choose a machine</option>
+      {% for machine in equipment %}
+      <option value="{{ machine.code }}"{% if values.equipment == machine.code %} selected{% endif %}>{{ machine.code }} {{ machine.name }}</option>
+      {% endfor %}
+    </select>
+    {{- error_for("equipment") }}
+  </div>
+
+  <div class="field">
+    <label for="title">Short title</label>
+    <p class="hint" id="title-hint">{{ rules.title_min }} to {{ rules.title_max }} characters. What is wrong, in a few words.</p>
+    <input id="title" name="title" type="text" required minlength="{{ rules.title_min }}"
+           maxlength="{{ rules.title_max }}" value="{{ values.title or '' }}"{{ described("title", "title-hint") }}>
+    {{- error_for("title") }}
+  </div>
+
+  <div class="field">
+    <label for="description">What you saw</label>
+    <p class="hint" id="description-hint">{{ rules.description_min }} to {{ rules.description_max }} characters. When it happens, what it sounds or looks like, what you tried.</p>
+    <textarea id="description" name="description" rows="5" required minlength="{{ rules.description_min }}"
+              maxlength="{{ rules.description_max }}"{{ described("description", "description-hint") }}>{{ values.description or '' }}</textarea>
+    {{- error_for("description") }}
+  </div>
+
+  <fieldset class="field"{{ described("severity") }}>
+    <legend>Severity</legend>
+    {% for s in severities %}
+    <div class="choice">
+      <input id="severity-{{ s }}" name="severity" type="radio" value="{{ s }}" required{% if values.severity == s %} checked{% endif %}>
+      <label for="severity-{{ s }}">{{ s | capitalize }}</label>
+    </div>
+    {% endfor %}
+    {{- error_for("severity") }}
+  </fieldset>
+  {% if issue %}
+
+  <div class="field">
+    <label for="status">Status</label>
+    <select id="status" name="status" required{{ described("status") }}>
+      {% for s in statuses %}
+      <option value="{{ s }}"{% if values.status == s %} selected{% endif %}>{{ status_labels[s] }}</option>
+      {% endfor %}
+    </select>
+    {{- error_for("status") }}
+  </div>
+  {% endif %}
+
+  <div class="field">
+    <label for="downtime-minutes">Downtime so far, in minutes</label>
+    <p class="hint" id="downtime-hint">A whole number from 0 to {{ rules.downtime_max }}. Enter 0 if the machine is still running.</p>
+    <input id="downtime-minutes" name="downtime_minutes" type="number" required min="0"
+           max="{{ rules.downtime_max }}" step="1" inputmode="numeric" value="{{ values.downtime_minutes or '' }}"{{ described("downtime_minutes", "downtime-hint") }}>
+    {{- error_for("downtime_minutes") }}
+  </div>
+
+  <div class="field choice">
+    <input id="locked-out" name="locked_out" type="checkbox" value="yes"{% if values.locked_out == "yes" %} checked{% endif %}{{ described("locked_out", "locked-out-hint") }}>
+    <label for="locked-out">The machine is locked out</label>
+    <p class="hint" id="locked-out-hint">Required for a critical issue. This box records a lockout a person performed. It does not stop the machine.</p>
+    {{- error_for("locked_out") }}
+  </div>
+
+  <div class="actions">
+    <button type="submit">{% if issue %}Save changes{% else %}Log the issue{% endif %}</button>
+    {% if issue %}
+    <a class="button secondary" href="{{ url_for('issue_detail', issue_id=issue.id) }}">Cancel</a>
+    {% endif %}
+  </div>
+</form>
+{% endblock %}

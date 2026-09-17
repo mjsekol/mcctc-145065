@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Scrap entries{% endblock %}
+{% block content %}
+<h1>Line 3 scrap entries</h1>
+<form method="get" action="{{ url_for('index') }}" class="search" role="search">
+  <label for="q">Search the reasons</label>
+  <input id="q" name="q" type="search" maxlength="60" value="{{ q }}">
+  <button type="submit">Search</button>
+</form>
+<p>{{ rows | length }} {{ "entry" if rows | length == 1 else "entries" }}{% if q %} with a reason containing "{{ q }}"{% endif %}.</p>
+<table>
+  <thead><tr><th scope="col">Part</th><th scope="col">Shift</th><th scope="col" class="num">Pieces</th><th scope="col">Reason</th><th scope="col">Kind</th></tr></thead>
+  <tbody>
+    {% for row in rows %}
+    <tr>
+      <td>{{ row.number }} {{ row.name }}</td>
+      <td>{{ row.entry.shift | capitalize }}</td>
+      <td class="num">{{ row.entry.quantity }}</td>
+      <td><a href="{{ url_for('entry_detail', entry_id=row.entry.id) }}">{{ row.entry.reason }}</a></td>
+      <td>{% if row.entry.rework_minutes %}<span class="tag tag-rework">Reworked</span>{% else %}<span class="tag tag-scrap">Scrapped</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

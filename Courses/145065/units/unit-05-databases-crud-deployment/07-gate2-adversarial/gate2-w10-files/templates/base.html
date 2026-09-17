@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} · Line 3 Downtime Log</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="{{ url_for('static', filename='downtime.css') }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <p class="brand">Line 3 Downtime Log</p>
+      <nav aria-label="Main">
+        <a href="{{ url_for('dashboard') }}">Downtime events</a>
+        <a href="{{ url_for('report') }}">Cost report</a>
+      </nav>
+    </header>
+    <main id="main">{% block content %}{% endblock %}</main>
+    <footer>Riverside Fabrication is a composite: an invented shop with invented records, used for teaching.</footer>
+  </body>
+</html>

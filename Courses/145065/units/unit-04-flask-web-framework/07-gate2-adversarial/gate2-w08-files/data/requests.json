@@ -1,0 +1,18 @@
+{
+  "site": "Riverside Fabrication (composite), Line 3",
+  "parts": [
+    {"number": "BRG-14", "name": "Roller bearing, 40 mm"},
+    {"number": "BLT-09", "name": "Drive belt, A-section"},
+    {"number": "TC-22", "name": "Thermocouple, type K"},
+    {"number": "FLT-03", "name": "Hydraulic filter element"},
+    {"number": "SW-07", "name": "Guard interlock switch"}
+  ],
+  "requests": [
+    {"id": 1, "part": "TC-22", "title": "Oven zone 2 reads low", "quantity": 2,
+     "priority": "urgent", "note": "Reads 12 C low against the reference probe.", "filled": false},
+    {"id": 2, "part": "BLT-09", "title": "Exhaust fan belt worn", "quantity": 1,
+     "priority": "soon", "note": "Squeals on start, tension low.", "filled": false},
+    {"id": 3, "part": "FLT-03", "title": "Press filter overdue", "quantity": 4,
+     "priority": "routine", "note": "", "filled": true}
+  ]
+}

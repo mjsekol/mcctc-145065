@@ -1,0 +1,77 @@
+<Window x:Class="ShiftTally.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Shift Tally (Line 3, a composite shop)"
+        Width="900" Height="600" MinWidth="700" MinHeight="560">
+    <!--
+      Lab U07-01 STARTER. This file builds and runs. It shows a heading and
+      the station row, and nothing else yet.
+
+      Every element below is an object. Every attribute sets a property on it.
+      The Grid has six rows. Rows 0 and 1 are done. You write rows 2 to 5.
+      The lab handout has the sketch and the exact x:Name for every control.
+    -->
+
+    <Grid x:Name="Root" Background="#F4F4F4">
+        <Grid.Resources>
+            <!-- One style for every button: tall enough for a gloved finger. -->
+            <Style TargetType="Button">
+                <Setter Property="MinHeight" Value="64" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Margin" Value="6" />
+                <Setter Property="Padding" Value="16,6" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Foreground" Value="#111111" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 0: the heading. Done. -->
+        <Border Grid.Row="0" Background="#233452" Padding="20,12">
+            <TextBlock x:Name="HeadingText" Text="Press 2: Hinge bracket"
+                       FontSize="30" FontWeight="Bold" Foreground="White" />
+        </Border>
+
+        <!-- Row 1: station name and part type. Done. Read how the columns work. -->
+        <Grid Grid.Row="1" Margin="20,16,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Station" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <TextBox Grid.Column="1" x:Name="StationBox" Text="Press 2" MaxLength="20"
+                     FontSize="20" Padding="6" />
+            <TextBlock Grid.Column="3" Text="Part" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <ComboBox Grid.Column="4" x:Name="PartBox" FontSize="20" Padding="6">
+                <ComboBoxItem Content="Hinge bracket" IsSelected="True" />
+                <ComboBoxItem Content="Mounting rail" />
+                <ComboBoxItem Content="Cover plate" />
+            </ComboBox>
+        </Grid>
+
+        <!-- Row 2 (step 6): a UniformGrid with Rows="1" holding four buttons:
+             GoodButton, ScrapButton, UndoButton (starts disabled), ResetButton. -->
+
+        <!-- Row 3 (step 7): a horizontal StackPanel with three TextBlocks:
+             GoodText, ScrapText, TotalText. -->
+
+        <!-- Row 4 (step 8): a StackPanel holding a DockPanel (TargetText and
+             TargetSlider), then ShiftProgress, ProgressText, ShowRateBox, RateText. -->
+
+        <!-- Row 5 (step 9): a DockPanel with PrintButton docked right and
+             StatusText filling the rest. -->
+    </Grid>
+</Window>

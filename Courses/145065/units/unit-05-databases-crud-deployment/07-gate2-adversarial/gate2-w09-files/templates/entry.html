@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Entry {{ entry.id }}{% endblock %}
+{% block content %}
+<h1>Scrap entry {{ entry.id }}</h1>
+<dl>
+  <dt>Part</dt><dd>{{ entry.number }} {{ entry.name }}</dd>
+  <dt>Shift</dt><dd>{{ entry.shift | capitalize }}</dd>
+  <dt>Pieces</dt><dd>{{ entry.quantity }}</dd>
+  <dt>Reason</dt><dd>{{ entry.reason }}</dd>
+  <dt>Rework</dt><dd>{{ entry.rework_minutes }} minutes</dd>
+  <dt>Logged</dt><dd>{{ entry.logged_at }}</dd>
+</dl>
+<p><a class="danger" href="{{ url_for('delete', entry_id=entry.id) }}">Delete this entry</a></p>
+<p><a href="{{ url_for('index') }}">Back to scrap entries</a></p>
+{% endblock %}

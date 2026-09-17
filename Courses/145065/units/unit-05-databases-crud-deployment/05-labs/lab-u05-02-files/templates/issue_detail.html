@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% from "_macros.html" import described, error_for, error_summary with context %}
+{% block title %}{% if errors %}Error: {% endif %}Issue {{ issue.id }}{% endblock %}
+{% block heading %}Issue {{ issue.id }}: {{ issue.title }}{% endblock %}
+{% block content %}
+<dl class="facts">
+  <dt>Machine</dt>
+  <dd><a href="{{ url_for('equipment_detail', code=issue.equipment_code) }}">{{ issue.equipment_code }} {{ issue.equipment_name }}</a></dd>
+  <dt>Severity</dt>
+  <dd><span class="sev sev-{{ issue.severity }}">{{ issue.severity | capitalize }}</span></dd>
+  <dt>Status</dt>
+  <dd>{{ issue.status_label }}</dd>
+  <dt>Reported by</dt>
+  <dd>{{ issue.reporter_name }} ({{ issue.reporter_badge }})</dd>
+  <dt>Reported (UTC)</dt>
+  <dd>{{ issue.reported_at.strftime("%Y-%m-%d %H:%M") }}</dd>
+  {% if issue.closed_at %}
+  <dt>Closed (UTC)</dt>
+  <dd>{{ issue.closed_at.strftime("%Y-%m-%d %H:%M") }}, {{ "%.1f" | format(issue.hours_to_close) }} hours after it was reported</dd>
+  {% endif %}
+  <dt>Downtime</dt>
+  <dd>{{ issue.downtime_minutes }} minutes</dd>
+  <dt>Locked out</dt>
+  <dd>{{ "Yes" if issue.locked_out else "No" }}</dd>
+</dl>
+<h2>What the technician saw</h2>
+<p>{{ issue.description }}</p>
+<ul class="filters">
+  <li><a class="button" href="{{ url_for('edit_issue_form', issue_id=issue.id) }}">Edit issue {{ issue.id }}</a></li>
+  <li><a class="button danger" href="{{ url_for('confirm_delete', issue_id=issue.id) }}">Delete issue {{ issue.id }}</a></li>
+</ul>
+
+<h2 id="notes">Work notes</h2>
+{% if notes %}
+{#- tabindex lets a keyboard user scroll this table sideways on a narrow screen. It has no links to focus. #}
+<section class="table-wrap" tabindex="0" aria-label="Work notes table">
+  <table>
+    <caption>{{ notes | length }} {{ "note" if notes | length == 1 else "notes" }}, {{ notes | sum(attribute="minutes_spent") }} minutes of work</caption>
+    <thead>
+      <tr>
+        <th scope="col">When (UTC)</th>
+        <th scope="col">Who</th>
+        <th scope="col">Note</th>
+        <th scope="col" class="num">Minutes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for note in notes %}
+      <tr>
+        <td>{{ note.created_at.strftime("%Y-%m-%d %H:%M") }}</td>
+        <td>{{ note.technician_name }} ({{ note.technician_badge }})</td>
+        <td>{{ note.note }}</td>
+        <td class="num">{{ note.minutes_spent }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% else %}
+<p>No work notes yet.</p>
+{% endif %}
+
+<h3>Add a work note</h3>
+{{ error_summary("with this note") }}
+<form class="entry" action="{{ url_for('add_note', issue_id=issue.id) }}" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="field">
+    <label for="note-badge">Your badge number</label>
+    <p class="hint" id="note-badge-hint">Example: T-1041.</p>
+    <input id="note-badge" name="badge" type="text" required autocomplete="off"
+           pattern="{{ rules.badge_pattern }}" maxlength="6" value="{{ values.badge or '' }}"{{ described("badge", "note-badge-hint") }}>
+    {{- error_for("badge") }}
+  </div>
+  <div class="field">
+    <label for="note-text">What you did</label>
+    <textarea id="note-text" name="note" rows="3" required minlength="{{ rules.note_min }}"
+              maxlength="{{ rules.note_max }}"{{ described("note") }}>{{ values.note or '' }}</textarea>
+    {{- error_for("note") }}
+  </div>
+  <div class="field">
+    <label for="note-minutes">Minutes spent</label>
+    <p class="hint" id="note-minutes-hint">A whole number from {{ rules.note_minutes_min }} to {{ rules.note_minutes_max }}.</p>
+    <input id="note-minutes" name="minutes_spent" type="number" required min="{{ rules.note_minutes_min }}"
+           max="{{ rules.note_minutes_max }}" step="1" inputmode="numeric" value="{{ values.minutes_spent or '' }}"{{ described("minutes_spent", "note-minutes-hint") }}>
+    {{- error_for("minutes_spent") }}
+  </div>
+  <button type="submit">Add the note</button>
+</form>
+<p><a href="{{ url_for('list_issues') }}">Back to all issues</a></p>
+{% endblock %}

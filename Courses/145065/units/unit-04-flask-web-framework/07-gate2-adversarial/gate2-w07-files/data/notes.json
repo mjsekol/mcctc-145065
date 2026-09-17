@@ -1,0 +1,26 @@
+{
+  "site": "Riverside Fabrication (composite), Line 3",
+  "machines": [
+    {"code": "PB-01", "name": "Press Brake 1", "cell": "Forming"},
+    {"code": "OV-01", "name": "Powder Coat Cure Oven", "cell": "Finishing"},
+    {"code": "CV-01", "name": "Transfer Conveyor", "cell": "Transfer"},
+    {"code": "WR-01", "name": "Weld Robot", "cell": "Welding"}
+  ],
+  "notes": [
+    {"id": 1, "machine": "PB-01", "severity": "info", "left_by": "T-1041",
+     "left_at": "2025-11-12T06:10:00Z", "cleared": false,
+     "text": "Back gauge oil is a little low. Topped it off, watch it next week."},
+    {"id": 2, "machine": "OV-01", "severity": "urgent", "left_by": "T-1057",
+     "left_at": "2025-11-12T06:25:00Z", "cleared": false,
+     "text": "Zone 2 heater slow to reach setpoint. Do not run the first rack until it holds 200 C."},
+    {"id": 3, "machine": "CV-01", "severity": "watch", "left_by": "T-1062",
+     "left_at": "2025-11-12T06:40:00Z", "cleared": false,
+     "text": "Guard interlock tripped twice on second shift. Latch it firmly and it holds."},
+    {"id": 4, "machine": "WR-01", "severity": "info", "left_by": "T-1041",
+     "left_at": "2025-11-11T14:00:00Z", "cleared": true,
+     "text": "Wire spool changed. Cleared, no action needed."},
+    {"id": 5, "machine": "OV-01", "severity": "watch", "left_by": "T-1041",
+     "left_at": "2025-11-12T05:50:00Z", "cleared": false,
+     "text": "Exhaust fan belt squeals on start for the first ten minutes. Tension looks low."}
+  ]
+}

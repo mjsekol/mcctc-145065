@@ -1,0 +1,106 @@
+<Window x:Class="ShiftTally.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Shift Tally (Line 3, a composite shop)"
+        Width="900" Height="600" MinWidth="700" MinHeight="560">
+    <!--
+      Lab U07-03 STARTER. The Lab U07-02 window: every value on screen is
+      written by code-behind. On Tuesday (steps 7 to 12) you replace those
+      writes with {Binding} expressions, and most of the event attributes
+      below go away. Keep every x:Name: the self-check finds controls by name.
+    -->
+
+    <Grid x:Name="Root" Background="#F4F4F4">
+        <Grid.Resources>
+            <!-- One style for every button: tall enough for a gloved finger. -->
+            <Style TargetType="Button">
+                <Setter Property="MinHeight" Value="64" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Margin" Value="6" />
+                <Setter Property="Padding" Value="16,6" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Foreground" Value="#111111" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 0: the heading. -->
+        <Border Grid.Row="0" Background="#233452" Padding="20,12">
+            <TextBlock x:Name="HeadingText" Text="Press 2: Hinge bracket"
+                       FontSize="30" FontWeight="Bold" Foreground="White" />
+        </Border>
+
+        <!-- Row 1: station name and part type. -->
+        <Grid Grid.Row="1" Margin="20,16,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Station" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <TextBox Grid.Column="1" x:Name="StationBox" Text="Press 2" MaxLength="20"
+                     FontSize="20" Padding="6" TextChanged="OnStationChanged" />
+            <TextBlock Grid.Column="3" Text="Part" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <ComboBox Grid.Column="4" x:Name="PartBox" FontSize="20" Padding="6"
+                      SelectionChanged="OnPartChanged">
+                <ComboBoxItem Content="Hinge bracket" IsSelected="True" />
+                <ComboBoxItem Content="Mounting rail" />
+                <ComboBoxItem Content="Cover plate" />
+            </ComboBox>
+        </Grid>
+
+        <!-- Row 2: the four counting buttons, equal widths. -->
+        <UniformGrid Grid.Row="2" Rows="1" Margin="14,16,14,0">
+            <Button x:Name="GoodButton" Content="+1 GOOD" Background="#DDE8F7" Click="OnGoodClick" />
+            <Button x:Name="ScrapButton" Content="+1 SCRAP" Background="#F6DADF" Click="OnScrapClick" />
+            <Button x:Name="UndoButton" Content="UNDO LAST" IsEnabled="False" Click="OnUndoClick" />
+            <Button x:Name="ResetButton" Content="RESET SHIFT" Click="OnResetClick" />
+        </UniformGrid>
+
+        <!-- Row 3: the counts. -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="20,16,20,0">
+            <TextBlock x:Name="GoodText" Text="Good: 0" FontSize="28" FontWeight="Bold" Width="220" />
+            <TextBlock x:Name="ScrapText" Text="Scrap: 0" FontSize="28" FontWeight="Bold" Width="220" />
+            <TextBlock x:Name="TotalText" Text="Total: 0" FontSize="28" Width="220" />
+        </StackPanel>
+
+        <!-- Row 4: target, progress, and scrap rate. -->
+        <StackPanel Grid.Row="4" Margin="20,16,20,0">
+            <DockPanel>
+                <TextBlock x:Name="TargetText" Text="Shift target: 200" Width="200"
+                           VerticalAlignment="Center" />
+                <Slider x:Name="TargetSlider" Minimum="50" Maximum="500" Value="200"
+                        TickFrequency="50" IsSnapToTickEnabled="True" TickPlacement="BottomRight"
+                        VerticalAlignment="Center" ValueChanged="OnTargetChanged" />
+            </DockPanel>
+            <ProgressBar x:Name="ShiftProgress" Height="34" Margin="0,12,0,0"
+                         Minimum="0" Maximum="100" Value="0" Foreground="#57A1EB" />
+            <TextBlock x:Name="ProgressText" Text="0 of 200 good parts" Margin="0,4,0,0" />
+            <CheckBox x:Name="ShowRateBox" Content="Show scrap rate" IsChecked="True"
+                      FontSize="18" Margin="0,12,0,0" VerticalContentAlignment="Center"
+                      Checked="OnShowRateChanged" Unchecked="OnShowRateChanged" />
+            <TextBlock x:Name="RateText" Text="Scrap rate: no parts yet"
+                       FontSize="24" FontWeight="SemiBold" Margin="0,6,0,0" />
+        </StackPanel>
+
+        <!-- Row 5: the status line, and the print button on the right. -->
+        <DockPanel Grid.Row="5" Margin="14,0,14,8" VerticalAlignment="Bottom">
+            <Button x:Name="PrintButton" DockPanel.Dock="Right" Content="PRINT SUMMARY" Click="OnPrintClick" />
+            <TextBlock x:Name="StatusText" Text="Count each part as it leaves the station."
+                       Foreground="#5A5A5A" VerticalAlignment="Center" Margin="6,0,0,0"
+                       TextWrapping="Wrap" />
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Unit 7, Week 13. A first WPF app: a part counter for one station on
+    Line 3 (a composite shop). No network and no sensors.
+    Lab U07-01 builds the window. Lab U07-02 adds the handlers.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>ShiftTally</RootNamespace>
+  </PropertyGroup>
+
+</Project>

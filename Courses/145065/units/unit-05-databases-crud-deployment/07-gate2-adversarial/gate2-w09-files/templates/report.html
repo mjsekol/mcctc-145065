@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Rework report{% endblock %}
+{% block content %}
+<h1>Line 3 rework report</h1>
+<p>Every part, calculated from the scrap entries each time this page loads.</p>
+<table>
+  <thead><tr><th scope="col">Part</th><th scope="col" class="num">Pieces scrapped</th><th scope="col" class="num">Rework minutes</th><th scope="col" class="num">Rework hours</th></tr></thead>
+  <tbody>
+    {% for row in rows %}
+    <tr>
+      <td>{{ row.number }} {{ row.name }}</td>
+      <td class="num">{{ row.pieces }}</td>
+      <td class="num">{{ row.minutes }}</td>
+      <td class="num">{{ row.hours }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot><tr><th scope="row">All parts</th><td class="num">{{ totals.pieces }}</td><td class="num">{{ totals.minutes }}</td><td></td></tr></tfoot>
+</table>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Request {{ req.id }}{% endblock %}
+{% block content %}
+<h1>Request {{ req.id }}: {{ req.part }} {{ part.name if part }}</h1>
+<p>{{ req.quantity }} needed, priority {{ req.priority }}.</p>
+<h2>Reason</h2>
+<p>{{ req.title }}</p>
+<h2>Note</h2>
+<p>{{ req.note | safe }}</p>
+<p><a href="{{ url_for('board') }}">Back to open requests</a></p>
+{% endblock %}

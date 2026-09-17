@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ machine.code }} {{ machine.name }}{% endblock %}
+{% block heading %}{{ machine.code }} {{ machine.name }}{% endblock %}
+{% block content %}
+<dl class="facts">
+  <dt>Cell</dt>
+  <dd>{{ machine.cell }}</dd>
+  <dt>Kind</dt>
+  <dd>{{ machine.kind | capitalize }}</dd>
+</dl>
+<h2>Issues on this machine</h2>
+{% set caption = "Every issue logged against " ~ machine.code %}
+{% include "_issue_table.html" %}
+<p><a href="{{ url_for('list_issues', equipment=machine.code) }}">Search the issues on {{ machine.code }}</a></p>
+<p><a href="{{ url_for('list_equipment') }}">Back to equipment</a></p>
+{% endblock %}

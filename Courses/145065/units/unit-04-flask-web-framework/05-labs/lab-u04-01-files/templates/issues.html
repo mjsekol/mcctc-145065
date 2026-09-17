@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{% if status %}{{ status_labels[status] }} issues{% else %}All issues{% endif %}{% endblock %}
+{% block heading %}{% if status %}{{ status_labels[status] }} issues{% else %}All issues{% endif %}{% endblock %}
+{% block content %}
+<nav aria-label="Filter by status">
+  <ul class="filters">
+    <li><a class="button{% if status %} secondary{% endif %}" href="{{ url_for('list_issues') }}"{% if not status %} aria-current="page"{% endif %}>All</a></li>
+    {% for s in statuses %}
+    <li><a class="button{% if status != s %} secondary{% endif %}" href="{{ url_for('list_issues', status=s) }}"{% if status == s %} aria-current="page"{% endif %}>{{ status_labels[s] }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+{% set caption = (issues | length) ~ " issues, most urgent first" %}
+{% include "_issue_table.html" %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Event {{ event.id }}{% endblock %}
+{% block content %}
+<h1>Downtime event {{ event.id }}</h1>
+<p>{% if event.resolved %}<span class="tag tag-done">Resolved</span>{% else %}<span class="tag tag-open">Open</span>{% endif %}</p>
+<dl>
+  <dt>Machine</dt><dd>{{ event.code }} {{ event.name }}</dd>
+  <dt>Reason</dt><dd>{{ event.reason }}</dd>
+  <dt>Downtime</dt><dd>{{ event.minutes }} minutes</dd>
+  <dt>Estimated cost</dt><dd>${{ "%.2f"|format(cost) }}</dd>
+  <dt>Occurred</dt><dd>{{ event.occurred_at }}</dd>
+</dl>
+<p><a href="{{ url_for('dashboard') }}">Back to downtime events</a></p>
+{% endblock %}

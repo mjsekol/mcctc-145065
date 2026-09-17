@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Machines · Line 3 Shift Handoff</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='board.css') }}">
+  </head>
+  <body>
+    <main>
+      <h1>Line 3 machines</h1>
+      <table>
+        <thead><tr><th scope="col">Code</th><th scope="col">Machine</th><th scope="col">Open notes</th></tr></thead>
+        <tbody>
+          {% for machine in machines %}
+          <tr>
+            <td><a href="{{ url_for('machine_detail', code=machine.code) }}">{{ machine.code }}</a></td>
+            <td>{{ machine.name }}</td>
+            <td>{{ counts[machine.code] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

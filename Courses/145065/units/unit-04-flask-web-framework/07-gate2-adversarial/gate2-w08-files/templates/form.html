@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{% if errors %}Error: {% endif %}Request a part{% endblock %}
+{% block content %}
+<h1>Request a part</h1>
+{% if errors %}
+<div class="alert" role="alert">
+  <p>{{ errors | length }} problem(s) with this request.</p>
+  <ul>{% for field, message in errors.items() %}<li>{{ message }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+<form method="post" action="{{ url_for('create_request') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label for="part">Part</label>
+  <select id="part" name="part" required>
+    <option value="">Choose a part</option>
+    {% for p in parts %}
+    <option value="{{ p.number }}"{% if values.get('part') == p.number %} selected{% endif %}>{{ p.number }} {{ p.name }}</option>
+    {% endfor %}
+  </select>
+  {% if errors.get('part') %}<p class="field-error">{{ errors['part'] }}</p>{% endif %}
+  <label for="title">Reason</label>
+  <input id="title" name="title" type="text" required minlength="5" maxlength="60" value="{{ values.get('title', '') }}">
+  {% if errors.get('title') %}<p class="field-error">{{ errors['title'] }}</p>{% endif %}
+  <label for="quantity">Quantity</label>
+  <input id="quantity" name="quantity" type="number" required min="1" max="99" value="{{ values.get('quantity', '') }}">
+  {% if errors.get('quantity') %}<p class="field-error">{{ errors['quantity'] }}</p>{% endif %}
+  <label for="priority">Priority</label>
+  <select id="priority" name="priority" required>
+    <option value="">Choose a priority</option>
+    {% for pr in priorities %}
+    <option value="{{ pr }}"{% if values.get('priority') == pr %} selected{% endif %}>{{ pr | capitalize }}</option>
+    {% endfor %}
+  </select>
+  {% if errors.get('priority') %}<p class="field-error">{{ errors['priority'] }}</p>{% endif %}
+  <label for="note">Note (optional)</label>
+  <textarea id="note" name="note" rows="3" maxlength="500">{{ values.get('note', '') }}</textarea>
+  <p><button type="submit">Send request</button></p>
+</form>
+{% endblock %}

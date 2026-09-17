@@ -1,0 +1,12 @@
+# requirements.txt · Line 3 Maintenance Log 1.0.0
+#
+# What the server installs. Flask and Werkzeug are pinned to the versions
+# this stage was tested with; test_deploy.py checks the pins match.
+Flask==3.1.3
+Werkzeug==3.1.8
+
+# Production only. Not installed or tested on the build machine.
+# [VERIFY] Install on a lab machine or let Render install them, then pin the
+# versions pip reports with: pip freeze
+gunicorn
+psycopg[binary]

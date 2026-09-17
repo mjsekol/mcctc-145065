@@ -1,0 +1,59 @@
+<Window x:Class="ScrapTag.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Scrap Tag" Width="820" Height="560" MinWidth="700" MinHeight="520">
+    <Grid Background="#F4F4F4">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="MinHeight" Value="64" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Margin" Value="6" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Foreground" Value="#111111" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#233452" Padding="20,12">
+            <TextBlock Text="Scrap bench: sort, count, tag" FontSize="28" FontWeight="Bold" Foreground="White" />
+        </Border>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,16,20,0">
+            <TextBlock Text="Station" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <TextBox x:Name="StationBox" Width="260" FontSize="20" Padding="6" MaxLength="20" />
+        </StackPanel>
+
+        <UniformGrid Grid.Row="2" Rows="1" Margin="14,16,14,0">
+            <Button x:Name="BurrButton" Content="+1 BURR" Click="Button_Click" />
+            <Button x:Name="BentButton" Content="+1 BENT" Click="Button_Click_1" />
+            <Button x:Name="WrongHoleButton" Content="+1 WRONG HOLE" Click="Button_Click_2" />
+        </UniformGrid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="20,16,20,0">
+            <TextBlock x:Name="BurrText" Width="180" FontWeight="Bold" />
+            <TextBlock x:Name="BentText" Width="180" FontWeight="Bold" />
+            <TextBlock x:Name="WrongHoleText" Width="240" FontWeight="Bold" />
+            <TextBlock x:Name="TotalText" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="14,20,14,0">
+            <Button x:Name="PrintButton" Content="PRINT TAG" Width="220" Click="PrintButton_Click" />
+            <TextBlock Text="Lead code" VerticalAlignment="Center" Margin="30,0,10,0" />
+            <PasswordBox x:Name="LeadCodeBox" Width="120" FontSize="20" Padding="6" VerticalAlignment="Center" />
+            <Button x:Name="ClearButton" Content="CLEAR COUNTS" Width="240" Click="ClearButton_Click" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="5" x:Name="StatusText" Margin="20,0,20,14" VerticalAlignment="Bottom"
+                   Foreground="#5A5A5A" Text="Sort each part into its bin, then press its reason." />
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+/* board.css · high contrast, large targets: read on a shop floor. */
+body { font-family: system-ui, sans-serif; color: #111; background: #fff; margin: 0; }
+.site-header { background: #233452; color: #fff; padding: 1rem; }
+.site-header a { color: #fff; margin-right: 1rem; }
+main { padding: 1rem; max-width: 60rem; }
+a { color: #1a4c8b; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #7a7a7a; padding: 0.6rem; text-align: left; }
+th { background: #eef4fb; }
+.sev { font-weight: 700; padding: 0.1rem 0.4rem; border: 2px solid; }
+.sev-urgent { border-color: #b0001d; }
+.sev-watch { border-color: #c55a11; }
+.sev-info { border-color: #2e7d32; }
+a.button { display: inline-block; min-height: 44px; min-width: 44px; padding: 0.6rem 1rem;
+  background: #57a1eb; color: #08233f; text-decoration: none; border-radius: 4px; }
+footer { padding: 1rem; color: #5a5a5a; border-top: 1px solid #c7daf0; margin-top: 2rem; }

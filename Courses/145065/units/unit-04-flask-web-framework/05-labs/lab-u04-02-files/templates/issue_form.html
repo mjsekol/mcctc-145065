@@ -1,0 +1,102 @@
+{#-
+  issue_form.html · log a new issue.
+  Rendered blank for GET /issues/new, and with errors and the person's answers
+  for a refused POST. Every {{ value }} is escaped by Jinja, so a title full of
+  angle brackets shows as text. The hint attributes come from validation.py
+  through `rules`, so the browser and the server check the same numbers.
+-#}
+{% extends "base.html" %}
+{% block title %}{% if errors %}Error: {% endif %}Log an issue{% endblock %}
+{% block heading %}Log an issue{% endblock %}
+{% block content %}
+{%- macro described(field, hint_id="") -%}
+  {%- set ids = [] -%}
+  {%- if hint_id %}{% set ids = ids + [hint_id] %}{% endif -%}
+  {%- if field in errors %}{% set ids = ids + [field_ids[field] ~ "-error"] %}{% endif -%}
+  {%- if ids %} aria-describedby="{{ ids | join(' ') }}"{% endif -%}
+  {%- if field in errors %} aria-invalid="true"{% endif -%}
+{%- endmacro -%}
+{%- macro error_for(field) -%}
+  {%- if field in errors -%}
+{{ "
+    " }}<p class="field-error" id="{{ field_ids[field] }}-error"><span class="visually-hidden">Error: </span>{{ errors[field] }}</p>
+  {%- endif -%}
+{%- endmacro -%}
+{% if errors %}
+<div class="alert" role="alert" aria-labelledby="error-summary-title">
+  <h2 id="error-summary-title">{{ "There is a problem" if errors | length == 1 else "There are " ~ (errors | length) ~ " problems" }} with this issue</h2>
+  <ul>
+    {% for field, message in errors.items() %}
+    <li><a href="#{{ field_ids[field] }}">{{ message }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+<p>Every field is required except the lockout box. If the machine is unsafe, lock it out before you log the issue.</p>
+<form class="entry" action="{{ url_for('create_issue') }}" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field">
+    <label for="reported-by">Your badge number</label>
+    <p class="hint" id="reported-by-hint">T or S, a hyphen, then four digits. Example: T-1041.</p>
+    <input id="reported-by" name="reported_by" type="text" required autocomplete="off"
+           pattern="{{ rules.badge_pattern }}" maxlength="6" value="{{ values.reported_by or '' }}"{{ described("reported_by", "reported-by-hint") }}>
+    {{- error_for("reported_by") }}
+  </div>
+
+  <div class="field">
+    <label for="equipment">Machine</label>
+    <select id="equipment" name="equipment" required{{ described("equipment") }}>
+      <option value="">Choose a machine</option>
+      {% for machine in equipment %}
+      <option value="{{ machine.code }}"{% if values.equipment == machine.code %} selected{% endif %}>{{ machine.code }} {{ machine.name }}</option>
+      {% endfor %}
+    </select>
+    {{- error_for("equipment") }}
+  </div>
+
+  <div class="field">
+    <label for="title">Short title</label>
+    <p class="hint" id="title-hint">{{ rules.title_min }} to {{ rules.title_max }} characters. What is wrong, in a few words.</p>
+    <input id="title" name="title" type="text" required minlength="{{ rules.title_min }}"
+           maxlength="{{ rules.title_max }}" value="{{ values.title or '' }}"{{ described("title", "title-hint") }}>
+    {{- error_for("title") }}
+  </div>
+
+  <div class="field">
+    <label for="description">What you saw</label>
+    <p class="hint" id="description-hint">{{ rules.description_min }} to {{ rules.description_max }} characters. When it happens, what it sounds or looks like, what you tried.</p>
+    <textarea id="description" name="description" rows="5" required minlength="{{ rules.description_min }}"
+              maxlength="{{ rules.description_max }}"{{ described("description", "description-hint") }}>{{ values.description or '' }}</textarea>
+    {{- error_for("description") }}
+  </div>
+
+  <fieldset class="field"{{ described("severity") }}>
+    <legend>Severity</legend>
+    {% for s in severities %}
+    <div class="choice">
+      <input id="severity-{{ s }}" name="severity" type="radio" value="{{ s }}" required{% if values.severity == s %} checked{% endif %}>
+      <label for="severity-{{ s }}">{{ s | capitalize }}</label>
+    </div>
+    {% endfor %}
+    {{- error_for("severity") }}
+  </fieldset>
+
+  <div class="field">
+    <label for="downtime-minutes">Downtime so far, in minutes</label>
+    <p class="hint" id="downtime-hint">A whole number from 0 to {{ rules.downtime_max }}. Enter 0 if the machine is still running.</p>
+    <input id="downtime-minutes" name="downtime_minutes" type="number" required min="0"
+           max="{{ rules.downtime_max }}" step="1" inputmode="numeric" value="{{ values.downtime_minutes or '' }}"{{ described("downtime_minutes", "downtime-hint") }}>
+    {{- error_for("downtime_minutes") }}
+  </div>
+
+  <div class="field choice">
+    <input id="locked-out" name="locked_out" type="checkbox" value="yes"{% if values.locked_out == "yes" %} checked{% endif %}{{ described("locked_out", "locked-out-hint") }}>
+    <label for="locked-out">The machine is locked out</label>
+    <p class="hint" id="locked-out-hint">Required for a critical issue. This box records a lockout a person performed. It does not stop the machine.</p>
+    {{- error_for("locked_out") }}
+  </div>
+
+  <button type="submit">Log the issue</button>
+</form>
+{% endblock %}

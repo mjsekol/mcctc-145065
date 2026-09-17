@@ -1,0 +1,6 @@
+equipment_code,reported_by,title,description,severity,status,downtime_minutes,locked_out,reported_at,closed_at
+LC-01,T-1062,Assist gas pressure drops mid-sheet,"Nitrogen pressure falls from 18 bar to 12 bar on long cuts, and the edge quality drops with it.",high,open,35,no,2025-11-12T07:10:00Z,
+ZZ-99,T-1041,Machine that does not exist,"This row names a machine code that is not on Line 3.",medium,open,0,no,2025-11-12T08:25:00Z,
+PB-01,T-1057,Critical but not locked out,"This row breaks the lockout rule for critical issues.",critical,open,20,no,2025-11-12T09:02:00Z,
+WR-01,T-1041,Closed without a closing time,"This row says closed but gives no closed_at value.",low,closed,0,no,2025-11-05T12:40:00Z,
+PB-02,T-1041,Downtime is not a number,"This row has words where the minutes belong.",low,open,ten,no,2025-11-05T12:40:00Z,

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Unit 7, Week 14. The view model, in a plain library with no WPF in it.
+    net8.0, not net8.0-windows: nothing here knows a window exists, which is
+    why ShiftTally.Core.Tests can test all of it without opening one.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+</Project>

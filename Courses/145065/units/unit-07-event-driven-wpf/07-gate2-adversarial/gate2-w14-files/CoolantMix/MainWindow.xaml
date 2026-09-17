@@ -1,0 +1,97 @@
+<Window x:Class="CoolantMix.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Coolant Mix" Width="900" Height="640" MinWidth="760" MinHeight="600">
+    <Grid Background="#F4F4F4">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="MinHeight" Value="64" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Margin" Value="0,6,0,6" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Foreground" Value="#111111" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Padding" Value="6" />
+                <Setter Property="Margin" Value="0,4,0,4" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#233452" Padding="20,12">
+            <TextBlock Text="CNC sump: coolant mix check" FontSize="28" FontWeight="Bold" Foreground="White" />
+        </Border>
+
+        <Grid Grid.Row="1" Margin="20,12,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230" />
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Sump volume (L)" />
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="VolumeBox"
+                     Text="{Binding VolumeText, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="Badge" />
+            <TextBox Grid.Row="0" Grid.Column="4" x:Name="BadgeBox" MaxLength="4"
+                     Text="{Binding Badge, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Reading (%)" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="ReadingBox"
+                     Text="{Binding ReadingText, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" x:Name="TargetText"
+                       Text="{Binding Target, StringFormat=Target: {0:0.0} %}" />
+            <Slider Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" x:Name="TargetSlider"
+                    Minimum="4" Maximum="10" TickFrequency="0.5" IsSnapToTickEnabled="True"
+                    TickPlacement="BottomRight" VerticalAlignment="Center" Margin="0,10,0,10"
+                    Value="{Binding Target}" />
+        </Grid>
+
+        <Border Grid.Row="2" Margin="20,8,20,0" Padding="16,10" Background="White"
+                BorderBrush="#233452" BorderThickness="2">
+            <TextBlock x:Name="InstructionText" Text="{Binding Instruction}" FontSize="26" FontWeight="Bold" />
+        </Border>
+
+        <Grid Grid.Row="3" Margin="20,8,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="220" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Note" Margin="0,0,10,0" />
+            <TextBox Grid.Column="1" x:Name="NoteBox" MaxLength="120" Margin="0,4,12,4"
+                     Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Grid.Column="2" x:Name="LogButton" Content="LOG CHECK"
+                    IsEnabled="{Binding CanLog}" Click="LogButton_Click" />
+        </Grid>
+
+        <DockPanel Grid.Row="4" Margin="20,8,20,0">
+            <TextBlock DockPanel.Dock="Top" Text="Recent checks" FontSize="16" Foreground="#5A5A5A" />
+            <ListBox x:Name="RecentList" ItemsSource="{Binding RecentLines}" FontSize="15"
+                     FontFamily="Consolas" Margin="0,4,0,0" />
+        </DockPanel>
+
+        <TextBlock Grid.Row="5" x:Name="StatusText" Margin="20,6,20,10" FontSize="16" Foreground="#5A5A5A"
+                   Text="Measure with the refractometer, then enter the reading." />
+    </Grid>
+</Window>

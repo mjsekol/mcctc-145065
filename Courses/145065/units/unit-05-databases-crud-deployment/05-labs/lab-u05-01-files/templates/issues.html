@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{% if filtered %}Filtered issues{% else %}All issues{% endif %}{% endblock %}
+{% block heading %}All issues{% endblock %}
+{% block content %}
+<form class="filter-form" action="{{ url_for('list_issues') }}" method="get" role="search">
+  <div class="field">
+    <label for="q">Search titles and descriptions</label>
+    <input id="q" name="q" type="search" maxlength="{{ rules.search_max }}" value="{{ search }}">
+  </div>
+  <div class="field">
+    <label for="filter-status">Status</label>
+    <select id="filter-status" name="status">
+      <option value="">Any status</option>
+      {% for s in statuses %}
+      <option value="{{ s }}"{% if status == s %} selected{% endif %}>{{ status_labels[s] }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="filter-equipment">Machine</label>
+    <select id="filter-equipment" name="equipment">
+      <option value="">Any machine</option>
+      {% for machine in equipment %}
+      <option value="{{ machine.code }}"{% if chosen_equipment == machine.code %} selected{% endif %}>{{ machine.code }} {{ machine.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="actions">
+    <button type="submit">Show issues</button>
+    {% if filtered %}
+    <a class="button secondary" href="{{ url_for('list_issues') }}">Clear filters</a>
+    {% endif %}
+  </div>
+</form>
+{% if filtered %}
+{% set caption = (issues | length) ~ " matching " ~ ("issue" if issues | length == 1 else "issues") ~ ", most urgent first" %}
+{% else %}
+{% set caption = (issues | length) ~ " issues, most urgent first" %}
+{% endif %}
+{% include "_issue_table.html" %}
+{% endblock %}

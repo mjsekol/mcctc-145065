@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Delete issue {{ issue.id }}?{% endblock %}
+{% block heading %}Delete issue {{ issue.id }}?{% endblock %}
+{% block content %}
+<div class="alert">
+  <p>You are about to delete <strong>issue {{ issue.id }}: {{ issue.title }}</strong> on {{ issue.equipment_code }}{% if note_count %}, and its {{ note_count }} work {{ "note" if note_count == 1 else "notes" }}{% endif %}.</p>
+  <p>This cannot be undone. If the problem is fixed, close the issue instead so the record stays in the reports.</p>
+</div>
+<form action="{{ url_for('delete_issue', issue_id=issue.id) }}" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="actions">
+    <a class="button" href="{{ url_for('issue_detail', issue_id=issue.id) }}">Keep the issue</a>
+    <button class="danger" type="submit">Delete issue {{ issue.id }} permanently</button>
+  </div>
+</form>
+{% endblock %}

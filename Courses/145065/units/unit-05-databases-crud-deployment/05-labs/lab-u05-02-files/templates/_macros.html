@@ -1,0 +1,30 @@
+{#-
+  _macros.html · form helpers. Import them "with context" so they can see
+  `errors` and `field_ids`.
+    described(field, hint_id)  adds aria-describedby and aria-invalid
+    error_for(field)           the message under a field, or nothing
+-#}
+{%- macro described(field, hint_id="") -%}
+  {%- set ids = [] -%}
+  {%- if hint_id %}{% set ids = ids + [hint_id] %}{% endif -%}
+  {%- if field in errors %}{% set ids = ids + [field_ids[field] ~ "-error"] %}{% endif -%}
+  {%- if ids %} aria-describedby="{{ ids | join(' ') }}"{% endif -%}
+  {%- if field in errors %} aria-invalid="true"{% endif -%}
+{%- endmacro -%}
+{%- macro error_for(field) -%}
+  {%- if field in errors -%}
+{{ "\n    " }}<p class="field-error" id="{{ field_ids[field] }}-error"><span class="visually-hidden">Error: </span>{{ errors[field] }}</p>
+  {%- endif -%}
+{%- endmacro -%}
+{%- macro error_summary(heading) -%}
+{% if errors %}
+<div class="alert" role="alert" aria-labelledby="error-summary-title">
+  <h2 id="error-summary-title">{{ "There is a problem" if errors | length == 1 else "There are " ~ (errors | length) ~ " problems" }} {{ heading }}</h2>
+  <ul>
+    {% for field, message in errors.items() %}
+    <li><a href="#{{ field_ids[field] }}">{{ message }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{%- endmacro -%}

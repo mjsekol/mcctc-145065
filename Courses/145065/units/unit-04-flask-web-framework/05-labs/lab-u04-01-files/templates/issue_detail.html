@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Issue {{ issue.id }}{% endblock %}
+{% block heading %}Issue {{ issue.id }}: {{ issue.title }}{% endblock %}
+{% block content %}
+<dl class="facts">
+  <dt>Machine</dt>
+  <dd><a href="{{ url_for('equipment_detail', code=machine.code) }}">{{ machine.code }} {{ machine.name }}</a> ({{ machine.cell }} cell)</dd>
+  <dt>Severity</dt>
+  <dd><span class="sev sev-{{ issue.severity }}">{{ issue.severity | capitalize }}</span></dd>
+  <dt>Status</dt>
+  <dd>{{ issue.status_label }}</dd>
+  <dt>Reported by</dt>
+  <dd>{{ reporter.display_name }} ({{ reporter.badge }})</dd>
+  <dt>Reported (UTC)</dt>
+  <dd>{{ issue.reported_at.strftime("%Y-%m-%d %H:%M") }}</dd>
+  <dt>Downtime</dt>
+  <dd>{{ issue.downtime_minutes }} minutes</dd>
+  <dt>Locked out</dt>
+  <dd>{{ "Yes" if issue.locked_out else "No" }}</dd>
+</dl>
+<h2>What the technician saw</h2>
+<p>{{ issue.description }}</p>
+<p><a href="{{ url_for('list_issues') }}">Back to all issues</a></p>
+{% endblock %}
