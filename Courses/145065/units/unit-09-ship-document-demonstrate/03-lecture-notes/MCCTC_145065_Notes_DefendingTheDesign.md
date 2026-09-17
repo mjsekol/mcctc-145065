@@ -69,7 +69,7 @@ python sim_control.py --port 8705 mode silent
 ```
 
 Every tile goes dark, and the alarm banner stays up. That is the moment you point at and say the
-sentence your design depends on. In the lab the port is 8660.
+sentence your design depends on. In the lab the port is 8700.
 
 ---
 

@@ -110,8 +110,6 @@ The course runs 18 weeks. **Grading Period 3 is Weeks 1-9** and **Grading Period
 Everything is scheduled by week and day, so your teacher will tell you how the weeks line up with
 this year's calendar.
 
-Units are added here as they are finished. If a folder is not here yet, it is coming.
-
 Plus `Courses/Misc/` for the Side Quest Catalog, the Lab Acceptable Use and Safety Agreement, and
 the side quest bundles.
 

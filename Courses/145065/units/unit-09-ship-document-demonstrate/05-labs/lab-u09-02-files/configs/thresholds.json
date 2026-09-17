@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "setting": "Riverside Fabrication, Line 3. A composite shop, not a real one. Every limit below is a decision the composite shop made, not a figure from a real process sheet.",
-  "service_url": "http://127.0.0.1:8660",
+  "service_url": "http://127.0.0.1:8700",
   "poll_interval_ms": 1000,
   "request_timeout_ms": 1500,
   "stale_after_seconds": 5,

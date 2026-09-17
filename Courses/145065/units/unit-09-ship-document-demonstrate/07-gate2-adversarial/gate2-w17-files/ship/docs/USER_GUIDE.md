@@ -72,7 +72,7 @@ limit takes effect immediately and is recorded in the EVENTS list.
 
 For the technically curious: the PollingLoop sends an HTTP request to the Pi's API every 1000 ms.
 Replies are JSON. If a value is null, or an exception is thrown while a reply is read, the ViewModel
-marks the tile as missing. The panel talks to the sensor service at http://127.0.0.1:8660 unless the
+marks the tile as missing. The panel talks to the sensor service at http://127.0.0.1:8700 unless the
 csproj settings say otherwise.
 
 ## When to call someone

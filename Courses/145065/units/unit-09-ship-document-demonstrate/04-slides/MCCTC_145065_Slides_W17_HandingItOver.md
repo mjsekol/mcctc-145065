@@ -31,7 +31,7 @@ python sim_control.py --port 8705 mode drift
 python sim_control.py --port 8705 mode freeze
 200 {"mode": "freeze", "meaning": "the service answers, but sequence and sampled_at stop advancing (STALE)"}
 ```
-Speaker notes: You switch the simulator from a second terminal while the trainee watches the panel, not you. This is real output from the build PC, which uses port 8705. In the lab you use 8660. Write down what the trainee did in each situation, not whether they did well.
+Speaker notes: You switch the simulator from a second terminal while the trainee watches the panel, not you. This is real output from the build PC, which uses port 8705. In the lab you use 8700. Write down what the trainee did in each situation, not whether they did well.
 Image: None. This slide is code.
 ---
 ## Slide 5: The Check situation

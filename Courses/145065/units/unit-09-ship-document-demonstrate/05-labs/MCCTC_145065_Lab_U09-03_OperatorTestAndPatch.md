@@ -58,7 +58,7 @@ visitor. In the next you are the **control partner** for your partner's panel, b
 **Step 1. Set up the station (before the first visitor).** Put your printed user guide on the desk. Start
 the simulator and your panel as `control-script.md` says.
 *You should see* your panel in full screen, CONNECTED, and a `200` from
-`python sim_control.py --port 8660 read` in your partner's terminal.
+`python sim_control.py --port 8700 read` in your partner's terminal.
 
 **Step 2. Dry run with your partner (5 minutes).** Your partner plays the visitor and reads the consent
 line back to you. You read T1 aloud. Your partner switches modes for T2 and T5. Do not skip this: a
@@ -82,7 +82,7 @@ your sheet: `O1 L1`, `O1 L2`, and so on.
 **Step 6. Swap roles** and run your partner's session.
 
 **Step 7. After the last session,** stop the simulator with Ctrl+C and check the port is free.
-*You should see* `Stopped.` and no output from `netstat -ano | findstr :8660`.
+*You should see* `Stopped.` and no output from `netstat -ano | findstr :8700`.
 
 **Step 8.** Type your record sheet into your project as `docs/OPERATOR_TEST.md`, using the exemplar
 layout your instructor shows. Commit.
@@ -173,16 +173,16 @@ Build 2.
 ## If it breaks
 
 **1. `sensor_service.py: error: the following arguments are required: --port`**
-The simulator has no default port, on purpose. Add `--port 8660`.
+The simulator has no default port, on purpose. Add `--port 8700`.
 
-**2. `Cannot start: port 8660 is already in use on 127.0.0.1; choose another or stop that program`**
+**2. `Cannot start: port 8700 is already in use on 127.0.0.1; choose another or stop that program`**
 Someone's simulator from the last session is still running. Stop it with Ctrl+C in its terminal. If you
-cannot find it, use `--port 8661` for the simulator and start your panel with
-`--url http://127.0.0.1:8661`.
+cannot find it, use `--port 8701` for the simulator, as Unit 8's run-book does, and start your panel with
+`--url http://127.0.0.1:8701`.
 
-**3. `No answer from http://127.0.0.1:8660: timed out`** after `sim_control.py ... read`
+**3. `No answer from http://127.0.0.1:8700: timed out`** after `sim_control.py ... read`
 The simulator is in `silent` mode, which is what T5 asks for. Run
-`python sim_control.py --port 8660 mode normal`. Mode commands still work while it is silent.
+`python sim_control.py --port 8700 mode normal`. Mode commands still work while it is silent.
 
 **4. The tests fail with this, after step 11:**
 
@@ -218,7 +218,7 @@ count. Run it against the guide from step 14 and confirm it fails there.
       change log
 - [ ] Severity sheet copied into `docs/OPERATOR_TEST.md`
 - [ ] A change request in `docs/CHANGE_IMPACT.md` for each code fix
-- [ ] Simulator stopped, port 8660 free
+- [ ] Simulator stopped, port 8700 free
 - [ ] No `bin` or `obj` folders committed
 
 ---

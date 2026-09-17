@@ -12,9 +12,9 @@ a simulator. Python standard library only.
 
 Run it (from this folder):
 
-    python sensor_service.py --port 8660
-    python sensor_service.py --port 8660 --mode freeze
-    python sensor_service.py --port 8660 --backend hardware      # lab Pi only [VERIFY]
+    python sensor_service.py --port 8700
+    python sensor_service.py --port 8700 --mode freeze
+    python sensor_service.py --port 8700 --backend hardware      # lab Pi only [VERIFY]
 
 There is no default port. You name one every time, and the service refuses a
 port something else is already using, instead of quietly sharing it.
@@ -252,7 +252,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Line 3 sensor service (composite setting). Serves GET /api/readings.")
     parser.add_argument("--port", type=int, required=True,
-                        help="port to listen on. Required. The lab uses 8660.")
+                        help="port to listen on. Required. The lab uses 8700.")
     parser.add_argument("--host", default="127.0.0.1",
                         help="address to listen on (default 127.0.0.1, this machine only)")
     parser.add_argument("--backend", choices=("sim", "hardware"), default="sim",

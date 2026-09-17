@@ -3,10 +3,10 @@
 Switch a running simulator's mode from a second terminal, and read what the
 panel would read. Python standard library only.
 
-    python sim_control.py --port 8660 mode              # show the current mode
-    python sim_control.py --port 8660 mode drift        # switch to drift
-    python sim_control.py --port 8660 mode drop-sensor --sensor coolant-level
-    python sim_control.py --port 8660 read              # one GET /api/readings
+    python sim_control.py --port 8700 mode              # show the current mode
+    python sim_control.py --port 8700 mode drift        # switch to drift
+    python sim_control.py --port 8700 mode drop-sensor --sensor coolant-level
+    python sim_control.py --port 8700 read              # one GET /api/readings
 
 This talks to the simulator, not to equipment. Nothing here switches a machine.
 """

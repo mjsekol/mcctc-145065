@@ -38,7 +38,7 @@ python sim_control.py --port 8705 mode drift
 python sim_control.py --port 8705 mode silent
 200 {"mode": "silent", "meaning": "the service accepts connections and never answers (MISSING, by timeout)"}
 ```
-Speaker notes: Your partner runs these from a card while you talk. On the build PC the port was 8705; in the lab it is 8660. Drift, wait for red, then silent. Every tile goes dark and the alarm banner stays. That is the moment your whole design exists for. Point at it.
+Speaker notes: Your partner runs these from a card while you talk. On the build PC the port was 8705; in the lab it is 8700. Drift, wait for red, then silent. Every tile goes dark and the alarm banner stays. That is the moment your whole design exists for. Point at it.
 Image: None. This slide is code.
 ---
 ## Slide 6: The wrong way: from memory, in front of everyone

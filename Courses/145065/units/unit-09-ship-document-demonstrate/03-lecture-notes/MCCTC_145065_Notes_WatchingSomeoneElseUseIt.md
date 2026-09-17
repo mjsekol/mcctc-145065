@@ -66,7 +66,7 @@ Cannot start: port 8705 is already in use on 127.0.0.1; choose another or stop t
 ```
 
 The service refuses rather than guess. Stop the old one with Ctrl+C in its terminal, or use another
-port and point the panel at it. In the lab, the port is 8660.
+port and point the panel at it. In the lab, the port is 8700.
 
 ---
 

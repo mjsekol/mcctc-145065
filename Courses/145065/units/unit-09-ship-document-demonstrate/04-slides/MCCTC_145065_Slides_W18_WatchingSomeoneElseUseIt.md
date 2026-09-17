@@ -35,7 +35,7 @@ Image: A speech bubble with the sentence, in navy.
 python sim_control.py --port 8705 mode drift
 200 {"mode": "drift", "meaning": "oven temperature climbs past its alarm threshold and keeps climbing"}
 ```
-Speaker notes: Behind the divider, your partner switches modes when you signal. This is from the build PC, which uses port 8705; in the lab it is 8660. Read through the real panel 11 seconds later, the oven tile said ALARM HIGH with an unacknowledged alarm banner. The five task cards produce every state in one session.
+Speaker notes: Behind the divider, your partner switches modes when you signal. This is from the build PC, which uses port 8705; in the lab it is 8700. Read through the real panel 11 seconds later, the oven tile said ALARM HIGH with an unacknowledged alarm banner. The five task cards produce every state in one session.
 Image: None. This slide is code.
 ---
 ## Slide 6: The wrong way: last session's simulator is still running

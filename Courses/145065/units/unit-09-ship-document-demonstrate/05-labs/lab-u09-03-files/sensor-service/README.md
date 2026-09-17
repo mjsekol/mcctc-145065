@@ -2,16 +2,24 @@
 
 The program on the Line 3 Raspberry Pi, and the simulator you run on a lab PC. Python 3 standard library only: nothing to install. Riverside Fabrication and its Line 3 are a composite, not a real shop.
 
-**Where this copy came from.** It is the course's Line 3 sensor service, copied for the Unit 9 operator test. The Python files are unchanged. This README was changed in three places: this paragraph, and two lines about the test file, which is not in this copy because its tests read files that live beside the reference panel. Your own panel from Unit 8 is the other half.
+**Where this copy came from.** It is the course's Line 3 sensor service, copied for the Unit 9 operator test. One thing changed in the Python files: the example commands and the `--help` text name port 8700, the classroom port Unit 8 used, where the course's instructor copy says 8660. This README was changed too: this paragraph, the port under "Run it", and two lines about the test file, which is not in this copy because its tests read files that live beside the reference panel. Your own panel from Unit 8 is the other half.
 
 ## Run it
 
+Use **port 8700**, as in Unit 8. Check it is free first; no output means it is free:
+
 ```
-python sensor_service.py --port 8660                       # simulator, normal
-python sensor_service.py --port 8660 --mode drift          # start in any mode
-python sensor_service.py --port 8660 --backend hardware    # lab Pi only [VERIFY]
-python sim_control.py --port 8660 mode freeze              # switch mode while it runs
-python sim_control.py --port 8660 read                     # one GET /api/readings
+netstat -ano | findstr :8700
+```
+
+Then, from this folder:
+
+```
+python sensor_service.py --port 8700                       # simulator, normal
+python sensor_service.py --port 8700 --mode drift          # start in any mode
+python sensor_service.py --port 8700 --backend hardware    # lab Pi only [VERIFY]
+python sim_control.py --port 8700 mode freeze              # switch mode while it runs
+python sim_control.py --port 8700 read                     # one GET /api/readings
 ```
 
 Stop the service with Ctrl+C (or Ctrl+Break on Windows).

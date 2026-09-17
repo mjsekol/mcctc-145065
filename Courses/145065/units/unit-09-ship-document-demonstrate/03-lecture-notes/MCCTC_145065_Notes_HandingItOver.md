@@ -65,7 +65,7 @@ reader to act and to answer.**
 
 ## Worked example 1: set up the training station
 
-Training uses the simulator, on a lab PC. No hardware. **In the lab, use port 8660**, as in Unit 8.
+Training uses the simulator, on a lab PC. No hardware. **In the lab, use port 8700**, as in Unit 8.
 The commands and output below were run on the build PC, which uses port 8705. In the `sensor-service`
 folder:
 

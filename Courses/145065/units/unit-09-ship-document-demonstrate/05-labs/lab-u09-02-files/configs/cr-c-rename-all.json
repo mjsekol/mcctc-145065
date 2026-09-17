@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "setting": "Lab U09-02, change C. Riverside Fabrication is a composite. Renames high to alarm_high on every sensor, keeps schema_version 1.",
-  "service_url": "http://127.0.0.1:8660",
+  "service_url": "http://127.0.0.1:8700",
   "poll_interval_ms": 1000,
   "request_timeout_ms": 1500,
   "stale_after_seconds": 5,

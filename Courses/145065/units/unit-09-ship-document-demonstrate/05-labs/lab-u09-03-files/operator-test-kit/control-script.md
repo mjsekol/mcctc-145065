@@ -13,16 +13,16 @@ instructor's decision, under the Lab Acceptable Use and Safety Agreement, and ne
 In the `sensor-service` folder, check the port is free, then start the simulator:
 
 ```
-netstat -ano | findstr :8660
-python sensor_service.py --port 8660
+netstat -ano | findstr :8700
+python sensor_service.py --port 8700
 ```
 
 No output from the first command means the port is free. The second prints three lines. The first of
-them is `Line 3 sensor service on http://127.0.0.1:8660`.
+them is `Line 3 sensor service on http://127.0.0.1:8700`.
 
 Open a **second** terminal in the same folder. Every command below goes there.
 
-The facilitator starts the panel pointed at `http://127.0.0.1:8660` and confirms CONNECTED.
+The facilitator starts the panel pointed at `http://127.0.0.1:8700` and confirms CONNECTED.
 
 ## The signal
 
@@ -33,12 +33,12 @@ the task number in a normal voice, as if reading the card.
 
 | Task | When | Command | Then |
 |---|---|---|---|
-| T1 | before the person sits down | `python sim_control.py --port 8660 mode normal` | nothing changes |
-| T2 | on the facilitator's T2 signal | `python sim_control.py --port 8660 mode drift` | the oven alarms in about 10 seconds |
-| T3 | on the T3 signal | `python sim_control.py --port 8660 mode freeze` | readings stop changing; STALE in about 6 seconds |
-| T4 | on the T4 signal | `python sim_control.py --port 8660 mode drop-sensor --sensor coolant-level` | coolant goes dark in about 2 seconds |
-| T5 | on the T5 signal | `python sim_control.py --port 8660 mode silent` | every tile goes dark in about 3 seconds |
-| after | when the person has left | `python sim_control.py --port 8660 mode normal` | CONNECTED returns |
+| T1 | before the person sits down | `python sim_control.py --port 8700 mode normal` | nothing changes |
+| T2 | on the facilitator's T2 signal | `python sim_control.py --port 8700 mode drift` | the oven alarms in about 10 seconds |
+| T3 | on the T3 signal | `python sim_control.py --port 8700 mode freeze` | readings stop changing; STALE in about 6 seconds |
+| T4 | on the T4 signal | `python sim_control.py --port 8700 mode drop-sensor --sensor coolant-level` | coolant goes dark in about 2 seconds |
+| T5 | on the T5 signal | `python sim_control.py --port 8700 mode silent` | every tile goes dark in about 3 seconds |
+| after | when the person has left | `python sim_control.py --port 8700 mode normal` | CONNECTED returns |
 
 Every mode command prints a line that starts with `200`. If yours does not, tell the facilitator
 quietly before the next task.
@@ -56,7 +56,7 @@ ACKNOWLEDGED within a few seconds, and that banner stays through T5. That is cor
 Press **Ctrl+C** in the first terminal. It prints `Stopped.` Then check the port is free:
 
 ```
-netstat -ano | findstr :8660
+netstat -ano | findstr :8700
 ```
 
 No output means you are done.
