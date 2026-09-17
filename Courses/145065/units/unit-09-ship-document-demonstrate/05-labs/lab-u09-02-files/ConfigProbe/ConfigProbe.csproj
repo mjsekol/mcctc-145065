@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    ConfigProbe: loads a thresholds file with the SAME loader a version 1.0.0
+    Line 3 panel uses, and reports what that panel would do with it.
+    Lab U09-02, 145065 Unit 9. Plain net8.0, no packages.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>ConfigProbe</RootNamespace>
+  </PropertyGroup>
+
+</Project>

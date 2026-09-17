@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    ShipCheck: reads a ship folder and reports whether its documents agree
+    with each other and with the panel project. It reads files. It never
+    builds, runs, or changes anything.
+    Lab U09-01, 145065 Unit 9. Plain net8.0, so older lab SDKs build it.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>ShipCheck</RootNamespace>
+  </PropertyGroup>
+
+</Project>

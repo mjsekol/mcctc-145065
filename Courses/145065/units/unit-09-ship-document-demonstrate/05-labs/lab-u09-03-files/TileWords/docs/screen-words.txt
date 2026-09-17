@@ -1,0 +1,11 @@
+# Every word the practice panel can show, in the order ScreenWords.All lists them.
+# Tiles first, then the connection badge. One per line.
+NORMAL
+ALARM HIGH
+ALARM LOW
+STALE
+NO DATA
+WAITING
+CONNECTED
+DATA NOT UPDATING
+NO CONNECTION

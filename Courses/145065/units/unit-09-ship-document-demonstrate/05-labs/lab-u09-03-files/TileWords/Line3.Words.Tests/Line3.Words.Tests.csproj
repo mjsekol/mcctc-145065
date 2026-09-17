@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <!-- The exact versions already in the lab's NuGet cache. Do not change them. -->
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Line3.Words\Line3.Words.csproj" />
+  </ItemGroup>
+
+  <!-- The real documents, so the tests check what an operator reads. -->
+  <ItemGroup>
+    <None Include="..\docs\screen-words.txt" Link="docs\screen-words.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\docs\USER_GUIDE.md" Link="docs\USER_GUIDE.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

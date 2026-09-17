@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SAMPLE FILE for Gate 2 W17. ShipCheck reads this file as text.
+    It is not a buildable project: there is no code beside it.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <AssemblyTitle>Line 3 Sensor Monitor</AssemblyTitle>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+</Project>
